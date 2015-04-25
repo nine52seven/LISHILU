@@ -1,9 +1,11 @@
 <html>
 	<head>
 		<title>Laravel</title>
-		
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
-
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<link href='http://fonts.useso.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 		<style>
 			body {
 				margin: 0;
@@ -40,9 +42,11 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Laravel 5</div>
+				<div class="title">Lishilu.com</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>
+
+		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>

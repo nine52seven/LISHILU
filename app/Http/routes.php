@@ -11,4 +11,18 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+// Route::when('*', 'csrf', array('post', 'put', 'delete'));
+
+Route::get('/', 'IndexController@index');
+
+Route::controller('user', 'UserController');
+
+//登陆
+// Route::get('user/signin', 'UserController@signin');
+// Route::post('user/signin', 'UserController@postSignin');
+//注册
+// Route::get('user/signup', 'UserController@signup');
+//退出
+// Route::get('user/signout', 'UserController@signout');
+
+Route::get('dashboard', 'DashboardController@signout');
