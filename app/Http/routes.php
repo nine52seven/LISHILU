@@ -30,9 +30,7 @@ Route::get('about', 'IndexController@about');
 Route::get('contact', 'IndexController@contact');
 
 //登陆,注册,退出
-// Route::controller('user', 'UserController');
-Route::get('user/signup', 'UserController@getSignup');
-Route::post('user/signup', 'UserController@postSignup');
+Route::controller('user', 'UserController');
 
 //需要登录访问页面
 Route::group(['middleware' => 'auth'], function(){
