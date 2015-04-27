@@ -52,7 +52,8 @@ return [
 	|
 	*/
 
-	'locale' => 'en',
+	// 'locale' => 'en',
+	'locale' => 'zh-CN',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -132,7 +133,8 @@ return [
 		'Illuminate\Redis\RedisServiceProvider',
 		'Illuminate\Auth\Passwords\PasswordResetServiceProvider',
 		'Illuminate\Session\SessionServiceProvider',
-		'Illuminate\Translation\TranslationServiceProvider',
+		// 'Illuminate\Translation\TranslationServiceProvider',
+		'Overtrue\LaravelLang\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
@@ -146,6 +148,11 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+
+		/*
+		 * pinyin
+		 */
+		'Overtrue\LaravelPinyin\ServiceProvider',
 
 	],
 
@@ -195,8 +202,10 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-		'Form' => 'Collective\Html\FormFacade',
-		'Html' => 'Collective\Html\HtmlFacade',
+		'Form'   => 'Collective\Html\FormFacade',
+		'Html'   => 'Collective\Html\HtmlFacade',
+
+		'Pinyin' => 'Overtrue\Pinyin\Pinyin',
 
 	],
 

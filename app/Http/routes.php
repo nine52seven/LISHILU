@@ -11,18 +11,45 @@
 |
 */
 
+
+// 前台登录认证
+Route::filter('auth', function()
+{
+    if( !Auth::check() )
+    {
+        return Redirect::to('user/signin');
+    }
+});
+
 // Route::when('*', 'csrf', array('post', 'put', 'delete'));
 
+//未登录可以访问页面
 Route::get('/', 'IndexController@index');
+Route::get('home', 'IndexController@home');
+Route::get('about', 'IndexController@about');
+Route::get('contact', 'IndexController@contact');
 
-Route::controller('user', 'UserController');
+//登陆,注册,退出
+// Route::controller('user', 'UserController');
+Route::get('user/signup', 'UserController@getSignup');
+Route::post('user/signup', 'UserController@postSignup');
 
-//登陆
-// Route::get('user/signin', 'UserController@signin');
-// Route::post('user/signin', 'UserController@postSignin');
-//注册
-// Route::get('user/signup', 'UserController@signup');
-//退出
-// Route::get('user/signout', 'UserController@signout');
+//需要登录访问页面
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('dashboard', 'DashboardController@index');
+    Route::get('staff', 'StaffController@index');
+});
 
-Route::get('dashboard', 'DashboardController@signout');
+#对后台开启csrf过滤
+// Route::when('admin/*', 'csrf', ['post','delete','put']);
+
+
+// Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+//     Route::get('user', function() {
+//         // blablabla...
+//     });
+//     Route::get('article', function() {
+//         // blablabla...
+//     });
+// });
+

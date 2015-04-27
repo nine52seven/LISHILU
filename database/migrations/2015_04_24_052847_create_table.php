@@ -21,6 +21,7 @@ class CreateTable extends Migration {
             $table->boolean('sex');
             $table->string('tel');
             $table->string('mobile');
+            $table->tinyInteger('active');
             $table->text('description');
             $table->rememberToken();
             $table->softDeletes();

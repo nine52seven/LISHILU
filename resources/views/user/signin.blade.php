@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title')Lishilu.com @stop
+@section('title') 登录 @stop
 
 @section('headjs')
 @stop
@@ -14,10 +14,13 @@
           <div class="row">
             {!! Form::open(array('url' => 'user/signin', 'class' => 'col s12', 'method' => 'post')) !!}
               <div class="row">
+                @if(Session::has('message'))
+                <div class="card-panel red center-align" style="color:#fff;">{{Session::get('message')}}</div>
+                @endif
                 <div class="input-field col s12">
                   <i class="mdi-action-account-circle prefix"></i>
-                  {!! Form::text('username', '', array('class' => 'validate', 'id' => 'icon_username')) !!}
-                  {!! Form::label('icon_username', '用户名') !!}
+                  {!! Form::text('email', old('email'), array('class' => 'validate', 'id' => 'icon_email')) !!}
+                  {!! Form::label('icon_email', 'Email') !!}
                 </div>
                 <div class="input-field col s12">
                   <i class="mdi-action-lock prefix"></i>
@@ -25,8 +28,11 @@
                   {!! Form::label('icon_password', '密码') !!}
                 </div>
                 <div class="input-field col s8">
-                  {!! Form::checkbox('rememberme', '1', '', array('id' => 'rememberme')) !!}
-                  {!! Form::label('rememberme', '记住我') !!}
+                @if (Auth::viaRemember())
+                1111
+                @endif
+                  {!! Form::checkbox('remember', '1', '', array('id' => 'remember')) !!}
+                  {!! Form::label('remember', '记住我') !!}
                 </div>
                 <div class="input-field col s4">
                   <button class="btn waves-effect waves-light orange" type="submit" name="signin">登录

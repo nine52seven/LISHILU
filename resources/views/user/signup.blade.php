@@ -1,68 +1,68 @@
 @extends('layouts.site')
 
-@section('title')Lishilu.com @stop
+@section('title') 注册 @stop
 
 @section('headjs')
 @stop
 
 @section('content')
-<div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">LISHILU.com</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6 offset-m3 signin">
+      <div class="card">
+        <div class="card-content">
+          <div class="row">
+            {!! Form::open(array('url' => 'user/signup', 'class' => 'col s12', 'method' => 'post')) !!}
+              <div class="row">
+                @foreach ($errors->all() as $error)
+                    <p class="error">{{ $error }}</p>
+                @endforeach
+                <div class="input-field col s12">
+                  <i class="mdi-communication-email prefix"></i>
+                  {!! Form::text('email', old('email'), array('class' => 'validate', 'id' => 'icon_email')) !!}
+                  {!! Form::label('icon_email', 'Email') !!}
+                </div>
+                <div class="input-field col s12">
+                  <i class="mdi-action-lock prefix"></i>
+                  {!! Form::password('password', '', array('class' => 'validate', 'id' => 'icon_password')) !!}
+                  {!! Form::label('icon_password', '密码') !!}
+                </div>
+                <div class="input-field col s12">
+                  <i class="mdi-action-lock-outline prefix"></i>
+                  {!! Form::password('password_confirmation', '', array('class' => 'validate', 'id' => 'icon_password_confirmation')) !!}
+                  {!! Form::label('icon_password_confirmation', '重复密码') !!}
+                </div>
+                <!-- <div class="input-field col s12">
+                  <i class="mdi-action-home prefix"></i>
+                  {!! Form::text('company', '', array('class' => 'validate', 'id' => 'icon_company')) !!}
+                  {!! Form::label('icon_company', '公司') !!}
+                </div>
+                <div class="input-field col s12">
+                  <i class="mdi-hardware-phone-iphone prefix"></i>
+                  {!! Form::text('mobile', '', array('class' => 'validate', 'id' => 'icon_mobile')) !!}
+                  {!! Form::label('icon_mobile', '手机') !!}
+                </div> -->
+                <!-- <div class="input-field col s12">
+                  {!! Form::checkbox('remember', '1', '', array('id' => 'remember')) !!}
+                  {!! Form::label('remember', '记住我') !!}
+                </div> -->
+                <div class="input-field col s12 center-align">
+                  <button class="btn waves-effect waves-light orange" type="submit" name="signup">免费注册
+                    <i class="mdi-content-send right"></i>
+                  </button>
+                </div>
+              </div>
+            {!! Form::close() !!}
+          </div>
+        </div>
+        <div class="card-action">
+          <a href="/user/foget_password">忘记密码</a>
+          已有账号? <a href="/user/signin">我要登录</a>
+        </div>
       </div>
-      <div class="row center">
-        <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">开始了解</a>
-      </div>
-      <br><br>
-
     </div>
   </div>
-
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-image-flash-on"></i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-social-group"></i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-action-settings"></i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <br><br>
-
-    <div class="section">
-
-    </div>
-  </div>
-
+</div>
 @stop
 
 @section('js')

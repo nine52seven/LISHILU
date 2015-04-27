@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use Route;
+use Auth;
+use Session;
+
 class IndexController extends Controller {
 
 	/*
@@ -20,7 +24,7 @@ class IndexController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest');
+		// $this->middleware('guest');
 	}
 
 	/**
@@ -31,6 +35,40 @@ class IndexController extends Controller {
 	public function index()
 	{
 		return view('index');
+	}
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function home()
+	{
+		// return view('home');
+		echo Route::currentRouteAction();
+		dd(Auth::viaRemember());
+	}
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function about()
+	{
+		// return view('about');
+		echo Route::currentRouteAction();
+	}
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function contact()
+	{
+		// return view('contact');
+		echo Route::currentRouteAction();
 	}
 
 }

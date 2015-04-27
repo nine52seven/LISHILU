@@ -2,8 +2,14 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserSignupRequest;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Request;
+use Auth;
+use Redirect;
+use Hash;
+use Session;
 
 class UserController extends Controller {
 
@@ -18,87 +24,47 @@ class UserController extends Controller {
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    /**
      * 登陆.
      *
      * @return Response
      */
     public function getSignin()
     {
-
-        return view('user.signin');
+        if (!Auth::check()) {
+            return view('user.signin');
+        } else {
+            return redirect()->intended('dashboard');
+        }
     }
 
-    public function postSignin(Request $request)
+    // public function postSignin(Request $request)
+    public function postSignin()
     {
-        $username   = $request->input('username');
-        $password   = $request->input('password');
-        $rememberme = $request->input('rememberme');
 
-        echo $username.$password;
+        $data = Request::all();
+        $remember = empty($data['remember']) ? false : true;
+
+        if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'active' => 1], $remember))
+        {
+            // Auth::check();
+            $user = Auth::user();
+            Auth::login( $user );
+            //记录登陆日志
+            // $loginlog = new Loginlog();
+            // $loginlog->user_id = $user->id;
+            // $loginlog->ip = Request::getClientIp();
+            // $loginlog->created_at = date("Y-m-d H:i:s");
+            // $loginlog->user_agent = Request::header('user-agent');
+            // $loginlog->save();
+
+            return redirect()->intended('dashboard');
+        } else {
+            // return Redirect::to('user/signin')->with('message', '登录失败')->withInput(Request::except('password'));
+            return redirect('user/signin')->with('message', '登录失败')->withInput(Request::except('password'));
+            // return Redirect::to('user/signin')->withErrors($validator)->withInput($data);
+        }
+
+
     }
 
     /**
@@ -106,9 +72,28 @@ class UserController extends Controller {
      *
      * @return Response
      */
-    public function signup()
+    public function getSignup()
     {
         //
+        if (!Auth::check()) {
+            return view('user.signup');
+        } else {
+            return redirect()->intended('dashboard');
+        }
+    }
+
+    /**
+     * 注册操作.
+     *
+     * @param  UserSignupRequest  $request
+     * @return Response
+     */
+    public function postSignup(UserSignupRequest $request)
+    {
+        // $data = $request->all();
+
+        dd('haha');
+        // return view('user.signup');
     }
 
     /**
@@ -116,9 +101,20 @@ class UserController extends Controller {
      *
      * @return Response
      */
-    public function signout()
+    public function getSignout()
     {
-        //
+        Auth::logout();
+        return Redirect::to('/');
+    }
+
+    /**
+     * 个人资料.
+     *
+     * @return Response
+     */
+    public function getProfile()
+    {
+        return view('user.profile');
     }
 
 }

@@ -3,12 +3,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>{{config('APP_SITE')}} - @yield('title', '')</title>
+  <title>{{env('APP_SITE')}} @yield('title', '')</title>
 
   <!-- CSS  -->
-  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href='http://fonts.useso.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+  {!! Html::style('/css/style.css') !!}
+  {!! Html::style('/css/materialize.css') !!}
+  {!! Html::style('http://fonts.useso.com/css?family=Lato:100') !!}
+
   @yield('css')
 
   <!-- js  -->
@@ -17,20 +18,45 @@
 </head>
 <body>
   @section('header')
-  <nav class="orange" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Lishilu</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="/user/signin">登录</a></li>
-        <li><a href="/user/signup">注册</a></li>
-      </ul>
+  <!-- <ul id="dropdown1" class="dropdown-content">
+    <li><a href="/dashboard">团队管理</a></li>
+    <li><a href="/user/profile">个人资料</a></li>
+    <li class="divider"></li>
+    <li><a href="/user/signout">退出</a></li>
+  </ul> -->
+  <div class="navbar-fixed">
+    <nav class="orange" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="brand-logo">Lishilu</a>
+        @if (Auth::check())
+        <ul class="right hide-on-med-and-down">
+          <!-- <li><a href="#!" class="dropdown-button" data-activates="dropdown1">{{Auth::user()->name}} <i class="mdi-navigation-arrow-drop-down right"></i> </a></li> -->
+          <li><a href="/dashboard">团队管理</a></li>
+          <li><a href="/user/profile">个人资料</a></li>
+          <li><a href="/user/signout">退出</a></li>
+        </ul>
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="/user/signin">登录</a></li>
-        <li><a href="/user/signup">注册</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    </div>
-  </nav>
+        <ul id="nav-mobile" class="side-nav">
+          <!-- <li><a href="#!" class="dropdown-button" data-activates="dropdown1">{{Auth::user()->name}} <i class="mdi-navigation-arrow-drop-down right"></i> </a></li> -->
+          <li><a href="/dashboard">团队管理</a></li>
+          <li><a href="/user/profile">个人资料</a></li>
+          <li><a href="/user/signout">退出</a></li>
+        </ul>
+        @else
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/user/signin">登录</a></li>
+          <li><a href="/user/signup">注册</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="/user/signin">登录</a></li>
+          <li><a href="/user/signup">注册</a></li>
+        </ul>
+        @endif
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      </div>
+    </nav>
+  </div>
   @show
 
   @yield('content')
@@ -74,9 +100,10 @@
   @show
 
   <!--  Scripts-->
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/materialize.js"></script>
-  <script src="/js/all.js"></script>
+  {!! Html::script('/js/jquery.min.js') !!}
+  {!! Html::script('/js/materialize.js') !!}
+  {!! Html::script('/js/all.js') !!}
+
   @yield('js')
   </body>
 </html>
