@@ -14,23 +14,39 @@
           <div class="row">
             {!! Form::open(array('url' => 'user/signup', 'class' => 'col s12', 'method' => 'post')) !!}
               <div class="row">
-                @foreach ($errors->all() as $error)
-                    <p class="error">{{ $error }}</p>
-                @endforeach
+                <!-- @if ($errors->all())
+                  <div class="card-panel red white-text center-align">
+                    @foreach ($errors->all() as $error)
+                        <li> {{ $error }} </li>
+                    @endforeach
+                  </div>
+                @endif -->
                 <div class="input-field col s12">
                   <i class="mdi-communication-email prefix"></i>
                   {!! Form::text('email', old('email'), array('class' => 'validate', 'id' => 'icon_email')) !!}
-                  {!! Form::label('icon_email', 'Email') !!}
+                  @if ($errors->has('email'))
+                    {!! Form::label('icon_email', $errors->first('email'), ['class' => 'red-text']) !!}
+                  @else
+                    {!! Form::label('icon_email', 'Email') !!}
+                  @endif
                 </div>
                 <div class="input-field col s12">
                   <i class="mdi-action-lock prefix"></i>
-                  {!! Form::password('password', '', array('class' => 'validate', 'id' => 'icon_password')) !!}
-                  {!! Form::label('icon_password', '密码') !!}
+                  {!! Form::password('password', ['class' => 'validate', 'id' => 'icon_password']) !!}
+                  @if ($errors->has('password'))
+                    {!! Form::label('icon_password', $errors->first('password'), ['class' => 'red-text']) !!}
+                  @else
+                    {!! Form::label('icon_password', '密码') !!}
+                  @endif
                 </div>
                 <div class="input-field col s12">
                   <i class="mdi-action-lock-outline prefix"></i>
-                  {!! Form::password('password_confirmation', '', array('class' => 'validate', 'id' => 'icon_password_confirmation')) !!}
-                  {!! Form::label('icon_password_confirmation', '重复密码') !!}
+                  {!! Form::password('password_confirmation', ['class' => 'validate', 'id' => 'icon_password_confirmation']) !!}
+                  @if ($errors->has('password_confirmation'))
+                    {!! Form::label('icon_password_confirmation', $errors->first('password_confirmation'), ['class' => 'red-text']) !!}
+                  @else
+                    {!! Form::label('icon_password_confirmation', '重复密码') !!}
+                  @endif
                 </div>
                 <!-- <div class="input-field col s12">
                   <i class="mdi-action-home prefix"></i>

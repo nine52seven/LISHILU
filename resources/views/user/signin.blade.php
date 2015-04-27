@@ -19,19 +19,16 @@
                 @endif
                 <div class="input-field col s12">
                   <i class="mdi-action-account-circle prefix"></i>
-                  {!! Form::text('email', old('email'), array('class' => 'validate', 'id' => 'icon_email')) !!}
+                  {!! Form::text('email', old('email'), ['class' => 'validate', 'id' => 'icon_email']) !!}
                   {!! Form::label('icon_email', 'Email') !!}
                 </div>
                 <div class="input-field col s12">
                   <i class="mdi-action-lock prefix"></i>
-                  {!! Form::password('password', '', array('class' => 'validate', 'id' => 'icon_password')) !!}
+                  {!! Form::password('password', ['class' => 'validate', 'id' => 'icon_password']) !!}
                   {!! Form::label('icon_password', '密码') !!}
                 </div>
                 <div class="input-field col s8">
-                @if (Auth::viaRemember())
-                1111
-                @endif
-                  {!! Form::checkbox('remember', '1', '', array('id' => 'remember')) !!}
+                  {!! Form::checkbox('remember', '1', '', ['id' => 'remember']) !!}
                   {!! Form::label('remember', '记住我') !!}
                 </div>
                 <div class="input-field col s4">
