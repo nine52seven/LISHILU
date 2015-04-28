@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title')Lishilu.com @stop
+@section('title') {{ trans('site.slogan') }} @stop
 
 @section('headjs')
 @stop
@@ -9,12 +9,12 @@
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">让你的工作更简单</h1>
+      <h1 class="header center orange-text">{{ trans('site.slogan') }}</h1>
       <div class="row center">
-        <h5 class="header col s12 light">让创业者专注创业,其他小事交给我们</h5>
+        <h5 class="header col s12 light">{{ trans('site.subheading') }}</h5>
       </div>
       <div class="row center">
-        <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">开始了解</a>
+        <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">{{ trans('site.start_know') }}</a>
       </div>
       <br><br>
 

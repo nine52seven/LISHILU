@@ -10,6 +10,7 @@ use Auth;
 use Redirect;
 use Hash;
 use Session;
+use Lang;
 
 class UserController extends Controller {
 
@@ -60,7 +61,7 @@ class UserController extends Controller {
             return redirect()->intended('dashboard');
         } else {
             // return Redirect::to('user/signin')->with('message', '登录失败')->withInput(Request::except('password'));
-            return redirect('user/signin')->with('message', '登录失败')->withInput(Request::except('password'));
+            return redirect('user/signin')->with('message', Lang::get('site.login_failed'))->withInput(Request::except('password'));
             // return Redirect::to('user/signin')->withErrors($validator)->withInput($data);
         }
 
@@ -75,6 +76,7 @@ class UserController extends Controller {
     public function getSignup()
     {
         //
+        // dd(Lang::get('site.Signup'));
         if (!Auth::check()) {
             return view('user.signup');
         } else {

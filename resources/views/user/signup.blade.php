@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title') 注册 @stop
+@section('title') {{ trans('site.signup') }} @stop
 
 @section('headjs')
 @stop
@@ -12,40 +12,34 @@
       <div class="card">
         <div class="card-content">
           <div class="row">
+            <div class="col s12 center-align orange-text"> <i class="mdi-maps-location-history medium"></i></div>
             {!! Form::open(array('url' => 'user/signup', 'class' => 'col s12', 'method' => 'post')) !!}
               <div class="row">
-                <!-- @if ($errors->all())
-                  <div class="card-panel red white-text center-align">
-                    @foreach ($errors->all() as $error)
-                        <li> {{ $error }} </li>
-                    @endforeach
-                  </div>
-                @endif -->
                 <div class="input-field col s12">
                   <i class="mdi-communication-email prefix"></i>
                   {!! Form::text('email', old('email'), array('class' => 'validate', 'id' => 'icon_email')) !!}
                   @if ($errors->has('email'))
-                    {!! Form::label('icon_email', $errors->first('email'), ['class' => 'red-text']) !!}
+                    {!! Form::label('icon_email', $errors->first('email'), ['class' => 'red-text active']) !!}
                   @else
-                    {!! Form::label('icon_email', 'Email') !!}
+                    {!! Form::label('icon_email', trans('site.email')) !!}
                   @endif
                 </div>
                 <div class="input-field col s12">
                   <i class="mdi-action-lock prefix"></i>
                   {!! Form::password('password', ['class' => 'validate', 'id' => 'icon_password']) !!}
                   @if ($errors->has('password'))
-                    {!! Form::label('icon_password', $errors->first('password'), ['class' => 'red-text']) !!}
+                    {!! Form::label('icon_password', $errors->first('password'), ['class' => 'red-text active']) !!}
                   @else
-                    {!! Form::label('icon_password', '密码') !!}
+                    {!! Form::label('icon_password', trans('site.password')) !!}
                   @endif
                 </div>
                 <div class="input-field col s12">
                   <i class="mdi-action-lock-outline prefix"></i>
                   {!! Form::password('password_confirmation', ['class' => 'validate', 'id' => 'icon_password_confirmation']) !!}
                   @if ($errors->has('password_confirmation'))
-                    {!! Form::label('icon_password_confirmation', $errors->first('password_confirmation'), ['class' => 'red-text']) !!}
+                    {!! Form::label('icon_password_confirmation', $errors->first('password_confirmation'), ['class' => 'red-text active']) !!}
                   @else
-                    {!! Form::label('icon_password_confirmation', '重复密码') !!}
+                    {!! Form::label('icon_password_confirmation', trans('site.repeat_password')) !!}
                   @endif
                 </div>
                 <!-- <div class="input-field col s12">
@@ -63,8 +57,8 @@
                   {!! Form::label('remember', '记住我') !!}
                 </div> -->
                 <div class="input-field col s12 center-align">
-                  <button class="btn waves-effect waves-light orange" type="submit" name="signup">免费注册
-                    <i class="mdi-content-send right"></i>
+                  <button class="btn waves-effect waves-light orange" type="submit" name="signup">{{ trans('site.signup') }}
+                    <i class="mdi-navigation-arrow-forward right"></i>
                   </button>
                 </div>
               </div>
@@ -72,8 +66,8 @@
           </div>
         </div>
         <div class="card-action">
-          <a href="/user/foget_password">忘记密码</a>
-          已有账号? <a href="/user/signin">我要登录</a>
+          <a href="/user/foget_password">{{trans('site.forget_password')}}</a>
+          {{trans('site.have_account')}}? <a href="/user/signin">{{trans('site.i_want_signin')}}</a>
         </div>
       </div>
     </div>
