@@ -8,11 +8,11 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col s12 m6 offset-m3 signin">
+    <div class="col s12 m6 offset-m3 sign_form">
       <div class="card">
         <div class="card-content">
-          <div class="col s12 center-align orange-text"> <i class="mdi-file-cloud-queue medium"></i></div>
           <div class="row">
+            <div class="col s12 center-align orange-text"> <i class="mdi-file-cloud-queue medium"></i></div>
             {!! Form::open(array('url' => 'user/signin', 'class' => 'col s12', 'method' => 'post')) !!}
               <div class="row">
                 <div class="input-field col s12">
@@ -45,6 +45,7 @@
           <a href="/user/foget_password">{{trans('site.forget_password')}}</a>
           {{trans('site.have_no_account')}}? <a href="/user/signup">{{trans('site.i_want_signup')}}</a>
         </div>
+        <div class="col s12  center-align grey-text text-lighten-1"> {{ trans('site.slogan') }}</div>
       </div>
     </div>
   </div>

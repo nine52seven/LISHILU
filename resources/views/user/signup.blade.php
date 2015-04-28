@@ -8,7 +8,7 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col s12 m6 offset-m3 signin">
+    <div class="col s12 m6 offset-m3 sign_form">
       <div class="card">
         <div class="card-content">
           <div class="row">
