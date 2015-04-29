@@ -15,14 +15,14 @@ class CreateTable extends Migration {
         Schema::create('users', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->boolean('sex');
-            $table->string('tel');
-            $table->string('mobile');
+            $table->string('tel')->nullable();
+            $table->string('mobile')->nullable();
             $table->tinyInteger('active');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
@@ -32,7 +32,7 @@ class CreateTable extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->integer('company_id');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -11,6 +11,7 @@ use Redirect;
 use Hash;
 use Session;
 use Lang;
+use App\User;
 
 class UserController extends Controller {
 
@@ -77,11 +78,12 @@ class UserController extends Controller {
     {
         //
         // dd(Lang::get('site.Signup'));
-        if (!Auth::check()) {
-            return view('user.signup');
-        } else {
-            return redirect()->intended('dashboard');
-        }
+        // if (!Auth::check()) {
+        //     return view('user.signup');
+        // } else {
+        //     return redirect()->intended('dashboard');
+        // }
+        return view('user.signup');
     }
 
     /**
@@ -92,9 +94,13 @@ class UserController extends Controller {
      */
     public function postSignup(UserSignupRequest $request)
     {
-        // $data = $request->all();
+        $data = $request->all();
+        $user = new User;
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->save();
+        dd($user->id);
 
-        dd('haha');
         // return view('user.signup');
     }
 

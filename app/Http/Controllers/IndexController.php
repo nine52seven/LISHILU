@@ -46,7 +46,6 @@ class IndexController extends Controller {
 	{
 		// return view('home');
 		echo Route::currentRouteAction();
-		dd(Auth::viaRemember());
 	}
 
 	/**
@@ -69,6 +68,38 @@ class IndexController extends Controller {
 	{
 		// return view('contact');
 		echo Route::currentRouteAction();
+	}
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function privacy()
+	{
+		// return view('contact');
+		echo Route::currentRouteAction();
+	}
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function terms()
+	{
+		// return view('contact');
+		echo Route::currentRouteAction();
+	}
+
+	/**
+	 * Show the application welcome screen to the user.
+	 *
+	 * @return Response
+	 */
+	public function dashboard()
+	{
+		return view('admin.dashboard');
 	}
 
 }

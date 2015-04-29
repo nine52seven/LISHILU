@@ -18,26 +18,18 @@
 </head>
 <body>
   @section('header')
-  <!-- <ul id="dropdown1" class="dropdown-content">
-    <li><a href="/dashboard">团队管理</a></li>
-    <li><a href="/user/profile">个人资料</a></li>
-    <li class="divider"></li>
-    <li><a href="/user/signout">退出</a></li>
-  </ul> -->
   <div class="navbar-fixed">
     <nav class="orange" role="navigation">
       <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo"><i class="mdi-maps-location-history left"></i> Lishilu</a>
         @if (Auth::check())
         <ul class="right hide-on-med-and-down">
-          <!-- <li><a href="#!" class="dropdown-button" data-activates="dropdown1">{{Auth::user()->name}} <i class="mdi-navigation-arrow-drop-down right"></i> </a></li> -->
           <li><a href="/dashboard">{{ trans('site.dashboard') }}</a></li>
           <li><a href="/user/profile">{{ trans('site.profile') }}</a></li>
           <li><a href="/user/signout">{{ trans('site.signout') }}</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-          <!-- <li><a href="#!" class="dropdown-button" data-activates="dropdown1">{{Auth::user()->name}} <i class="mdi-navigation-arrow-drop-down right"></i> </a></li> -->
           <li><a href="/dashboard">{{ trans('site.dashboard') }}</a></li>
           <li><a href="/user/profile">{{ trans('site.profile') }}</a></li>
           <li><a href="/user/signout">{{ trans('site.signout') }}</a></li>

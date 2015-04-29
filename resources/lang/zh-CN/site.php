@@ -15,6 +15,7 @@ return [
     'have_no_account'  => '还没注册',
     'have_account'    => '已有账号',
     'login_failed' => '登录失败',
+    'profile' => '个人资料',
 
     //网站部分
     'copyright' => 'one2one studio!',
