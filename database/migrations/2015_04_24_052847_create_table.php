@@ -18,10 +18,10 @@ class CreateTable extends Migration {
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('password', 60);
-            $table->boolean('sex');
+            $table->boolean('sex')->default(0);
             $table->string('tel')->nullable();
             $table->string('mobile')->nullable();
-            $table->tinyInteger('active');
+            $table->tinyInteger('active')->default(0);
             $table->text('description')->nullable();
             $table->rememberToken();
             $table->softDeletes();
