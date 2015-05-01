@@ -15,15 +15,17 @@ class CreateTable extends Migration {
         Schema::create('users', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('email')->unique();
+            $table->string('name', 100)->nullable();
+            $table->string('email', 100)->unique();
             $table->string('password', 60);
             $table->boolean('sex')->default(0);
-            $table->string('tel')->nullable();
-            $table->string('mobile')->nullable();
-            $table->tinyInteger('active')->default(0);
+            $table->string('tel', 20)->nullable();
+            $table->string('mobile', 20)->nullable();
+            $table->tinyInteger('active', 1)->default(0);
             $table->text('description')->nullable();
             $table->rememberToken();
+            $table->string('activationcode', 100)->nullable();
+            $table->timestamp('actived_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -18,12 +18,20 @@
                 <div class="input-field col s12">
                   <i class="mdi-action-account-circle prefix"></i>
                   {!! Form::text('email', old('email'), ['class' => 'validate', 'id' => 'icon_email']) !!}
-                  {!! Form::label('icon_email', trans('site.email')) !!}
+                  @if ($errors->has('email'))
+                    {!! Form::label('icon_email', $errors->first('email'), ['class' => 'red-text active']) !!}
+                  @else
+                    {!! Form::label('icon_email', trans('site.email')) !!}
+                  @endif
                 </div>
                 <div class="input-field col s12">
                   <i class="mdi-action-lock prefix"></i>
                   {!! Form::password('password', ['class' => 'validate', 'id' => 'icon_password']) !!}
-                  {!! Form::label('icon_password', trans('site.password')) !!}
+                  @if ($errors->has('password'))
+                    {!! Form::label('icon_password', $errors->first('password'), ['class' => 'red-text active']) !!}
+                  @else
+                    {!! Form::label('icon_password', trans('site.password')) !!}
+                  @endif
                 </div>
                 <div class="input-field col s8">
                   {!! Form::checkbox('remember', '1', '', ['id' => 'remember']) !!}
@@ -42,10 +50,12 @@
           </div>
         </div>
         <div class="card-action">
-          <a href="/user/foget_password">{{trans('site.forget_password')}}</a>
-          {{trans('site.have_no_account')}}? <a href="/user/signup">{{trans('site.i_want_signup')}}</a>
+            <div class="col s6 m6 center-align"><a href="/user/signup">{{trans('site.i_want_signup')}}</a></div>
+            <div class="col s6 m6 center-align"><a href="/user/forgot">{{trans('site.forget_password')}}</a></div>
         </div>
-        <div class="col s12  center-align grey-text text-lighten-1"> {{ trans('site.slogan') }}</div>
+        <div class="right" style="margin-top:15px;">
+          <span class=" grey-text text-lighten-4"> {{ trans('site.slogan') }}</span>
+        </div>
       </div>
     </div>
   </div>

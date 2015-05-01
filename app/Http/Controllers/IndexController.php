@@ -32,7 +32,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getIndex()
 	{
 		return view('index');
 	}
@@ -42,7 +42,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function home()
+	public function getHome()
 	{
 		// return view('home');
 		echo Route::currentRouteAction();
@@ -53,7 +53,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function about()
+	public function getAbout()
 	{
 		// return view('about');
 		echo Route::currentRouteAction();
@@ -64,7 +64,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function contact()
+	public function getContact()
 	{
 		// return view('contact');
 		echo Route::currentRouteAction();
@@ -75,7 +75,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function privacy()
+	public function getPrivacy()
 	{
 		// return view('contact');
 		echo Route::currentRouteAction();
@@ -86,7 +86,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function terms()
+	public function getTerms()
 	{
 		// return view('contact');
 		echo Route::currentRouteAction();

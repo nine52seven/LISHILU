@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class UserSigninRequest extends Request {
+class UserForgotRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -23,7 +23,6 @@ class UserSigninRequest extends Request {
 	{
 		return [
 			"email" => ['required','email'],
-            "password" => ['required','min:6','max:16'],
 		];
 	}
 

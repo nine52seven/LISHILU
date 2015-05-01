@@ -134,7 +134,6 @@ return [
 		'Illuminate\Auth\Passwords\PasswordResetServiceProvider',
 		'Illuminate\Session\SessionServiceProvider',
 		// 'Illuminate\Translation\TranslationServiceProvider',
-		'Overtrue\LaravelLang\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
@@ -153,6 +152,11 @@ return [
 		 * pinyin
 		 */
 		'Overtrue\LaravelPinyin\ServiceProvider',
+
+		/*
+		 * 多语言
+		 */
+		'Overtrue\LaravelLang\TranslationServiceProvider',
 
 	],
 

@@ -23,4 +23,8 @@ return [
 
     "reset"    => "密码重置成功！",
 
+    "subject"  => env('APP_SITE') . "重置密码邮件",
+
+    "title"    => "重置密码",
+
 ];

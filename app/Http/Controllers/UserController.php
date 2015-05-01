@@ -3,6 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserSignupRequest;
+use App\Http\Requests\UserSigninRequest;
+use App\Http\Requests\UserForgotRequest;
+// use App\Http\Controllers\Password;
 
 // use Illuminate\Http\Request;
 use Request;
@@ -11,7 +14,10 @@ use Redirect;
 use Hash;
 use Session;
 use Lang;
+use Mail;
 use App\User;
+use Crypt;
+use Password;
 
 class UserController extends Controller {
 
@@ -20,9 +26,13 @@ class UserController extends Controller {
      *
      * @return Response
      */
-    public function index()
+    public function getIndex()
     {
-        //
+        $encrypted = Crypt::encrypt('secret');
+        $decrypted = Crypt::decrypt($encrypted);
+        echo $encrypted."<br/>";
+        echo $decrypted;
+        dd('index');
     }
 
     /**
@@ -39,31 +49,24 @@ class UserController extends Controller {
         }
     }
 
-    // public function postSignin(Request $request)
-    public function postSignin()
+    /**
+     * 登陆操作.
+     *
+     * @param  UserSigninRequest  $request
+     * @return Response
+     */
+    public function postSignin(UserSigninRequest $request)
     {
 
         $data = Request::all();
         $remember = empty($data['remember']) ? false : true;
-
         if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'active' => 1], $remember))
         {
-            // Auth::check();
             $user = Auth::user();
             Auth::login( $user );
-            //记录登陆日志
-            // $loginlog = new Loginlog();
-            // $loginlog->user_id = $user->id;
-            // $loginlog->ip = Request::getClientIp();
-            // $loginlog->created_at = date("Y-m-d H:i:s");
-            // $loginlog->user_agent = Request::header('user-agent');
-            // $loginlog->save();
-
             return redirect()->intended('dashboard');
         } else {
-            // return Redirect::to('user/signin')->with('message', '登录失败')->withInput(Request::except('password'));
-            return redirect('user/signin')->with('message', Lang::get('site.login_failed'))->withInput(Request::except('password'));
-            // return Redirect::to('user/signin')->withErrors($validator)->withInput($data);
+            return redirect('user/signin')->with('message', Lang::get('site.signin_failed'))->withInput(Request::except('password'));
         }
 
 
@@ -94,14 +97,23 @@ class UserController extends Controller {
      */
     public function postSignup(UserSignupRequest $request)
     {
-        $data = $request->all();
-        $user = new User;
-        $user->email = $data['email'];
-        $user->password = Hash::make($data['password']);
-        $user->save();
-        dd($user->id);
+        $user                  = new User;
+        $user->email           = Request::input('email');
+        $user->password        = Hash::make(Request::input('password'));
+        $user->activation_code = Hash::make($user->email.time());
 
-        // return view('user.signup');
+        if ($user->save()) {
+            $data = ['email' => $user->email, 'activation_code' => $user->activation_code];
+            Mail::send('emails.hello', $data, function($message) use($data) {
+                    // $message->from('us@example.com', 'Laravel');
+                    $message->to($data['email'], $data['email'])->subject(Lang::get('site.active_title'));
+                    // $message->attach($pathToFile);
+                }
+            );
+           return redirect('user/signin')->with('message', Lang::get('site.signup_success'));
+        } else {
+           return redirect('user/signup')->with('message', Lang::get('site.signup_failed'))->withInput();
+        }
     }
 
     /**
@@ -111,8 +123,104 @@ class UserController extends Controller {
      */
     public function getSignout()
     {
-        Auth::logout();
+        if (!Auth::guest()) Auth::logout();
         return Redirect::to('/');
+    }
+
+    /**
+     * 激活.
+     *
+     * @return Response
+     */
+    public function getActive()
+    {
+        $activation_code = Request::input('code');
+        $user = User::whereActivationCode($activation_code)->first();
+        if (!$user) {
+            return redirect('/');
+        }
+
+        $user->active = 1;
+        $user->activation_code = null;
+        $user->actived_at = date('Y-m-d H:i:s');
+        $user->save();
+        return redirect('user/signin')->with('message', Lang::get('site.active_ok'));
+    }
+
+    /**
+     * 忘记密码.
+     *
+     * @return Response
+     */
+    public function getForgot()
+    {
+        return view('user.forgot');
+    }
+
+    /**
+     * 忘记密码操作.
+     *
+     * @return Response
+     */
+    public function postForgot(UserForgotRequest $request)
+    {
+        // 调用系统提供的类
+        $response = Password::sendResetLink(['email' => Request::input('email')], function ($m, $user, $token) {
+            $m->subject(Lang::get('passwords.subject')); // 标题
+        });
+
+        switch ($response) {
+            case Password::INVALID_USER:
+                return Redirect::back()->with('message', Lang::get($response));
+            case Password::RESET_LINK_SENT:
+                return Redirect::back()->with('message', Lang::get($response));
+        }
+
+    }
+
+    /**
+     * 重设密码.
+     *
+     * @return Response
+     */
+    public function getReset()
+    {
+        $token = Request::input('token');
+        if (is_null($token)) abort(404);
+
+        return view('user.reset')->with('token', $token);
+    }
+
+    /**
+     * 重设密码操作.
+     *
+     * @return Response
+     */
+    public function postReset()
+    {
+        $credentials = Request::only(
+            'email', 'password', 'password_confirmation', 'token'
+        );
+
+        $response = Password::reset($credentials, function($user, $password)
+        {
+            $user->password = Hash::make($password);
+            $user->save();
+            //重置完直接登陆
+            Auth::login( $user );
+        });
+
+        switch ($response)
+        {
+            case Password::INVALID_PASSWORD:
+            case Password::INVALID_TOKEN:
+            case Password::INVALID_USER:
+                return Redirect::back()->with('error', Lang::get($response));
+
+            case Password::PASSWORD_RESET:
+                return redirect()->intended('dashboard');
+                // return Redirect::to('/');
+        }
     }
 
     /**

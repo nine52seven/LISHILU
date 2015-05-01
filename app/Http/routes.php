@@ -29,6 +29,9 @@ Route::get('home', 'IndexController@home');
 Route::get('about', 'IndexController@about');
 Route::get('contact', 'IndexController@contact');
 
+// Route::controller('/', 'IndexController');
+
+
 //登陆,注册,退出
 Route::controller('user', 'UserController');
 

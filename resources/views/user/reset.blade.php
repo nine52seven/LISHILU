@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('title') {{ trans('site.signup') }} @stop
+@section('title') {{ trans('passwords.title') }} @stop
 
 @section('headjs')
 @stop
@@ -13,8 +13,11 @@
         <div class="card-content">
           <div class="row">
             <div class="col s12 center-align orange-text"> <i class="mdi-maps-location-history medium"></i></div>
-            {!! Form::open(array('url' => 'user/signup', 'class' => 'col s12', 'method' => 'post')) !!}
+            {!! Form::open(array('url' => 'user/reset', 'class' => 'col s12', 'method' => 'post')) !!}
               <div class="row">
+                <div class="input-field col s12">
+                  <input type="hidden" name="token" value="{{ $token }}"/>
+                </div>
                 <div class="input-field col s12">
                   <i class="mdi-communication-email prefix"></i>
                   {!! Form::text('email', old('email'), array('class' => 'validate', 'id' => 'icon_email')) !!}
@@ -42,35 +45,17 @@
                     {!! Form::label('icon_password_confirmation', trans('site.repeat_password')) !!}
                   @endif
                 </div>
-                <!-- <div class="input-field col s12">
-                  <i class="mdi-action-home prefix"></i>
-                  {!! Form::text('company', '', array('class' => 'validate', 'id' => 'icon_company')) !!}
-                  {!! Form::label('icon_company', '公司') !!}
-                </div>
-                <div class="input-field col s12">
-                  <i class="mdi-hardware-phone-iphone prefix"></i>
-                  {!! Form::text('mobile', '', array('class' => 'validate', 'id' => 'icon_mobile')) !!}
-                  {!! Form::label('icon_mobile', '手机') !!}
-                </div> -->
-                <!-- <div class="input-field col s12">
-                  {!! Form::checkbox('remember', '1', '', array('id' => 'remember')) !!}
-                  {!! Form::label('remember', '记住我') !!}
-                </div> -->
                 <div class="input-field col s12 center-align">
-                  <button class="btn waves-effect waves-light orange" type="submit" name="signup">{{ trans('site.signup') }}
+                  <button class="btn waves-effect waves-light orange" type="submit" name="reset">{{ trans('passwords.title') }}
                     <i class="mdi-navigation-arrow-forward right"></i>
                   </button>
                 </div>
               </div>
             {!! Form::close() !!}
+            @if(Session::has('error'))
+            <div class="col s12 card-panel red center-align white-text" style="padding:5px 0;">{{Session::get('error')}}</div>
+            @endif
           </div>
-        </div>
-        <div class="card-action">
-            <div class="col s6 m6 center-align"><a href="/user/signin">{{trans('site.i_want_signin')}}</a></div>
-            <div class="col s6 m6 center-align"><a href="/user/forgot">{{trans('site.forget_password')}}</a></div>
-        </div>
-        <div class="right" style="margin-top:15px;">
-          <span class=" grey-text text-lighten-4"> {{ trans('site.slogan') }}</span>
         </div>
       </div>
     </div>
