@@ -32,7 +32,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getIndex()
+	public function index()
 	{
 		return view('index');
 	}
@@ -42,7 +42,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getHome()
+	public function home()
 	{
 		// return view('home');
 		echo Route::currentRouteAction();
@@ -53,7 +53,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getAbout()
+	public function about()
 	{
 		// return view('about');
 		echo Route::currentRouteAction();
@@ -64,7 +64,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getContact()
+	public function contact()
 	{
 		// return view('contact');
 		echo Route::currentRouteAction();
@@ -75,7 +75,7 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getPrivacy()
+	public function privacy()
 	{
 		// return view('contact');
 		echo Route::currentRouteAction();
@@ -86,20 +86,11 @@ class IndexController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function getTerms()
+	public function terms()
 	{
 		// return view('contact');
 		echo Route::currentRouteAction();
 	}
 
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	public function dashboard()
-	{
-		return view('admin.dashboard');
-	}
 
 }

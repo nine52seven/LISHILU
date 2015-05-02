@@ -6,8 +6,8 @@
   <title>{{env('APP_SITE')}} @yield('title', '')</title>
 
   <!-- CSS  -->
-  {!! Html::style('/css/style.css') !!}
-  {!! Html::style('/css/materialize.css') !!}
+  {!! Html::style('/assets/css/style.css') !!}
+  {!! Html::style('/assets/materialize-css/bin/materialize.css') !!}
   {!! Html::style('http://fonts.useso.com/css?family=Lato:100') !!}
 
   @yield('css')
@@ -89,9 +89,9 @@
   @show
 
   <!--  Scripts-->
-  {!! Html::script('/js/jquery.min.js') !!}
-  {!! Html::script('/js/materialize.js') !!}
-  {!! Html::script('/js/all.js') !!}
+  {!! Html::script('/assets/js/jquery.min.js') !!}
+  {!! Html::script('/assets/materialize-css/bin/materialize.js') !!}
+  {!! Html::script('/assets/js/all.js') !!}
 
   @yield('js')
   </body>

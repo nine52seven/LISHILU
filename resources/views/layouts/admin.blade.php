@@ -6,8 +6,13 @@
   <title>{{env('APP_SITE')}} @yield('title', '')</title>
 
   <!-- CSS  -->
-  {!! Html::style('/css/style.css') !!}
-  {!! Html::style('/css/materialize.css') !!}
+
+  {!! Html::style('/assets/css/style.css') !!}
+  {!! Html::style('/assets/bootstrap/css/bootstrap.min.css') !!}
+  {!! Html::style('/assets/bootstrap/css/bootstrap-theme.min.css') !!}
+  {!! Html::style('/assets/font-awesome/css/font-awesome.min.css') !!}
+  {!! Html::style('/assets/metisMenu/metisMenu.min.css') !!}
+  {!! Html::style('/assets/sb-admin-2/css/sb-admin-2.css') !!}
   {!! Html::style('http://fonts.useso.com/css?family=Lato:100') !!}
 
   @yield('css')
@@ -16,50 +21,183 @@
   @yield('headjs')
 
 </head>
-<body class="blue-grey darken-3">
+<body>
+<div class="wrapper">
   @section('header')
-  <div class="navbar-fixed">
-    <nav class="white" role="navigation">
-      <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
-        <li class="divider"></li>
-        <li><a href="#!">three</a></li>
-      </ul>
-      <ul id='dropdown2' class='dropdown-content'>
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
-        <li class="divider"></li>
-        <li><a href="#!">three</a></li>
-      </ul>
-      <div class="nav-wrapper">
-        <a id="logo-container" href="/" class="brand-logo blue-grey-text "><i class="mdi-maps-location-history left"></i> Lishilu</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#!" class="dropdown-button blue-grey-text" data-activates="dropdown1">{{Auth::user()->name}} <i class="mdi-navigation-arrow-drop-down right"></i> </a></li>
+  <nav style="margin-bottom: 0" role="navigation" class="navbar navbar-default navbar-static-top">
+    <div class="navbar-header">
+      <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/dashboard" class="navbar-brand">Lishilu.com</a>
+    </div>
+    <!-- /.navbar-header -->
+    <ul class="nav navbar-top-links navbar-right">
+      <!-- 新消息 -->
+      <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+          <i class="fa fa-bell fa-fw"></i>
+          <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-alerts">
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-comment fa-fw"></i>
+                New Comment
+                <span class="pull-right text-muted small">4 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-twitter fa-fw"></i>
+                3 New Followers
+                <span class="pull-right text-muted small">12 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-envelope fa-fw"></i>
+                Message Sent
+                <span class="pull-right text-muted small">4 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-tasks fa-fw"></i>
+                New Task
+                <span class="pull-right text-muted small">4 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#">
+              <div>
+                <i class="fa fa-upload fa-fw"></i>
+                Server Rebooted
+                <span class="pull-right text-muted small">4 minutes ago</span>
+              </div>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#" class="text-center">
+              <strong>See All Alerts</strong>
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </li>
         </ul>
-        <ul id="nav-mobile" class="side-nav">
-          <li><a href="#!" class="dropdown-button blue-grey-text" data-activates="dropdown2">{{Auth::user()->name}} <i class="mdi-navigation-arrow-drop-down right"></i> </a></li>
+        <!-- /.dropdown-alerts --> </li>
+      <!-- 个人设置 -->
+      <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+          <i class="fa fa-user fa-fw"></i>
+          {{$currentUser->email}}
+          <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+          <li>
+            <a href="/user/profile">
+              <i class="fa fa-gear fa-fw"></i>
+              {{trans('site.profile')}}
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="/user/signout">
+              <i class="fa fa-sign-out fa-fw"></i>
+              {{trans('site.signout')}}
+            </a>
+          </li>
         </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse blue-grey-text"><i class="mdi-navigation-menu"></i></a>
+        <!-- /.dropdown-user --> </li>
+    </ul>
+    <!-- /.navbar-top-links -->
+
+    <div role="navigation" class="navbar-default sidebar">
+      <div class="sidebar-nav navbar-collapse">
+        <ul id="side-menu" class="nav in">
+          <li class="sidebar-search">
+            <div class="input-group custom-search-form">
+              <input type="text" placeholder="Search..." class="form-control">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+            <!-- /input-group --> </li>
+          <li>
+            <a href="/dashboard">
+              <i class="fa fa-dashboard fa-fw"></i>
+              {{trans('site.dashboard')}}
+            </a>
+          </li>
+          <li>
+            <a href="/staff">
+              <i class="fa fa-bar-chart-o fa-fw"></i>
+              {{trans('site.staff')}}
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-table fa-fw"></i>
+              员工福利
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-edit fa-fw"></i>
+              社保基金
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-files-o fa-fw"></i>
+              关于Lishilu
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level collapse">
+              <li>
+                <a href="#">熟悉Lishilu</a>
+              </li>
+              <li>
+                <a href="#">我们团队</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level --> </li>
+        </ul>
       </div>
-    </nav>
-  </div>
+      <!-- /.sidebar-collapse --> </div>
+    <!-- /.navbar-static-side --> </nav>
   @show
-  <div class="">
-    <div class="left">
 
-    </div>
-    <div class="main">
-      welcome to lishilu!
-      @yield('content')
-    </div>
+  @section('body')
+  <div id="page-wrapper" style="min-height: 471px;">
+    @yield('content')
   </div>
   @show
 
+</div>
   <!--  Scripts-->
-  {!! Html::script('/js/jquery.min.js') !!}
-  {!! Html::script('/js/materialize.js') !!}
-  {!! Html::script('/js/all.js') !!}
+  {!! Html::script('/assets/js/jquery.min.js') !!}
+  {!! Html::script('/assets/bootstrap/js/bootstrap.min.js') !!}
+  {!! Html::script('/assets/metisMenu/metisMenu.min.js') !!}
+  {!! Html::script('/assets/sb-admin-2/js/sb-admin-2.js') !!}
+  {!! Html::script('/assets/js/all.js') !!}
 
   @yield('js')
   </body>

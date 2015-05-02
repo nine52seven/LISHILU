@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f41463aabac916ebef15296967c11d7d",
+    "hash": "a3fb6f6440fa78b2e743c6b867459544",
     "packages": [
         {
             "name": "caouecs/laravel4-lang",
@@ -914,6 +914,48 @@
             "time": "2015-04-03 14:33:59"
         },
         {
+            "name": "onokumus/metismenu",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/onokumus/metisMenu.git",
+                "reference": "c3bf00c14267bb4d364f8bba894c141790ddaae7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/onokumus/metisMenu/zipball/c3bf00c14267bb4d364f8bba894c141790ddaae7",
+                "reference": "c3bf00c14267bb4d364f8bba894c141790ddaae7",
+                "shasum": ""
+            },
+            "suggest": {
+                "components/jquery": ">=1.8"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Osman Nuri Okumus",
+                    "email": "onokumus@gmail.com",
+                    "homepage": "http://onokumus.com"
+                }
+            ],
+            "description": "A jQuery menu plugin",
+            "homepage": "https://github.com/onokumus/metisMenu",
+            "keywords": [
+                "JS",
+                "bootstrap",
+                "css",
+                "jquery",
+                "menu",
+                "plugin",
+                "web"
+            ],
+            "time": "2015-04-03 17:46:24"
+        },
+        {
             "name": "overtrue/laravel-lang",
             "version": "dev-master",
             "source": {
@@ -1001,16 +1043,16 @@
         },
         {
             "name": "overtrue/pinyin",
-            "version": "2.5.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/pinyin.git",
-                "reference": "b048eddce4039f1e8cd718142d8f075438b58b6e"
+                "reference": "8754f8aae5d9f279132296d87010f3863d15c3ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/pinyin/zipball/b048eddce4039f1e8cd718142d8f075438b58b6e",
-                "reference": "b048eddce4039f1e8cd718142d8f075438b58b6e",
+                "url": "https://api.github.com/repos/overtrue/pinyin/zipball/8754f8aae5d9f279132296d87010f3863d15c3ec",
+                "reference": "8754f8aae5d9f279132296d87010f3863d15c3ec",
                 "shasum": ""
             },
             "type": "library",
@@ -1036,7 +1078,7 @@
                 "Pinyin",
                 "cn2pinyin"
             ],
-            "time": "2015-03-16 13:07:18"
+            "time": "2015-04-28 10:31:04"
         },
         {
             "name": "psr/log",
@@ -2181,16 +2223,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.4.0",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "8724cd239f8ef4c046f55a3b18b4d91cc7f3e4c5"
+                "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8724cd239f8ef4c046f55a3b18b4d91cc7f3e4c5",
-                "reference": "8724cd239f8ef4c046f55a3b18b4d91cc7f3e4c5",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
+                "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
                 "shasum": ""
             },
             "require": {
@@ -2237,7 +2279,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2015-03-27 19:31:25"
+            "time": "2015-04-27 22:15:08"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2487,16 +2529,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.6.4",
+            "version": "4.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "163232991e652e6efed2f8470326fffa61e848e2"
+                "reference": "3afe303d873a4d64c62ef84de491b97b006fbdac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/163232991e652e6efed2f8470326fffa61e848e2",
-                "reference": "163232991e652e6efed2f8470326fffa61e848e2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3afe303d873a4d64c62ef84de491b97b006fbdac",
+                "reference": "3afe303d873a4d64c62ef84de491b97b006fbdac",
                 "shasum": ""
             },
             "require": {
@@ -2555,7 +2597,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-04-11 05:23:21"
+            "time": "2015-04-29 15:18:52"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3038,7 +3080,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "overtrue/laravel-pinyin": 20,
-        "overtrue/laravel-lang": 20
+        "overtrue/laravel-lang": 20,
+        "onokumus/metismenu": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

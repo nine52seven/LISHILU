@@ -14,8 +14,7 @@ class StaffController extends Controller {
 	 */
 	public function index()
 	{
-		//
-		echo Route::currentRouteAction();
+		return view('admin.staff.index');
 	}
 
 	/**
@@ -25,7 +24,7 @@ class StaffController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('admin.staff.create');
 	}
 
 	/**

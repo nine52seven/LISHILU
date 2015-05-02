@@ -2,6 +2,9 @@
 
 use Illuminate\Support\ServiceProvider;
 
+use Auth;
+use View;
+
 class AppServiceProvider extends ServiceProvider {
 
 	/**
@@ -11,7 +14,15 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		//共享登陆用户信息
+		// if (Auth::check()) {
+	 //        $this->currentUser = Auth::User();
+	 //        view()->share([ 'currentUser' => $this->currentUser ]);
+	 //    }
+
+	    View::composer('*', function($view){
+	        $view->with('currentUser', Auth::user());
+	    });
 	}
 
 	/**

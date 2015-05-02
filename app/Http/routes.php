@@ -29,16 +29,19 @@ Route::get('home', 'IndexController@home');
 Route::get('about', 'IndexController@about');
 Route::get('contact', 'IndexController@contact');
 
-// Route::controller('/', 'IndexController');
-
-
 //登陆,注册,退出
 Route::controller('user', 'UserController');
 
 //需要登录访问页面
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('dashboard', 'IndexController@dashboard');
-    Route::get('staff', 'StaffController@index');
+    Route::get('dashboard', 'DashboardController@index');
+
+    Route::group(['prefix' => 'staff'], function() {
+        Route::get('/', 'StaffController@index');
+        Route::get('create', 'StaffController@create');
+    });
+
+
 });
 
 #对后台开启csrf过滤
