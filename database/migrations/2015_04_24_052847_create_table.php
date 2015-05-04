@@ -21,7 +21,7 @@ class CreateTable extends Migration {
             $table->boolean('sex')->default(0);
             $table->string('tel', 20)->nullable();
             $table->string('mobile', 20)->nullable();
-            $table->tinyInteger('active', 1)->default(0);
+            $table->tinyInteger('active', 2)->default(0);
             $table->text('description')->nullable();
             $table->rememberToken();
             $table->string('activationcode', 100)->nullable();
