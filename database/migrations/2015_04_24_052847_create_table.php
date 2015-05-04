@@ -14,6 +14,7 @@ class CreateTable extends Migration {
     {
         Schema::create('users', function(Blueprint $table)
         {
+            $table->engine = 'MyISAM';
             $table->increments('id');
             $table->string('name', 100)->nullable();
             $table->string('email', 100)->unique();
@@ -31,6 +32,7 @@ class CreateTable extends Migration {
         });
         Schema::create('dept', function(Blueprint $table)
         {
+            $table->engine = 'MyISAM';
             $table->increments('id');
             $table->string('name');
             $table->integer('company_id');
@@ -40,6 +42,7 @@ class CreateTable extends Migration {
         });
         Schema::create('user_dept', function(Blueprint $table)
         {
+            $table->engine = 'MyISAM';
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('dept_id');
@@ -47,6 +50,7 @@ class CreateTable extends Migration {
         });
         Schema::create('company', function(Blueprint $table)
         {
+            $table->engine = 'MyISAM';
             $table->increments('id');
             $table->string('name', 100);
             $table->string('address');
