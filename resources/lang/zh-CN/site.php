@@ -6,7 +6,9 @@ return [
     'signout'          => '退出',
     'forget_password'  => '找回密码',
     'email'            => '邮箱',
+    'email_hint'       => '将作为你的登录名',
     'password'         => '密码',
+    'name'             => '姓名',
     'repeat_password'  => '重复密码',
     'confirm'          => '确定',
     'remember_me'      => '记住我',
@@ -41,6 +43,8 @@ return [
     //管理后台
     'dashboard_title' => '管理系统',
     'staff' => '公司员工',
+    'update' => '提交更新',
+    'do_ok' => '操作成功',
 
 
 ];

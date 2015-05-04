@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserSignupRequest;
 use App\Http\Requests\UserSigninRequest;
 use App\Http\Requests\UserForgotRequest;
+use App\Http\Requests\UserProfileRequest;
+
 // use App\Http\Controllers\Password;
 
 // use Illuminate\Http\Request;
@@ -101,6 +103,7 @@ class UserController extends Controller {
         $user->email           = Request::input('email');
         $user->password        = Hash::make(Request::input('password'));
         $user->activation_code = Hash::make($user->email.time());
+        $user->name           = Request::input('name');
 
         if ($user->save()) {
             $data = ['email' => $user->email, 'activation_code' => $user->activation_code];
@@ -160,6 +163,7 @@ class UserController extends Controller {
     /**
      * 忘记密码操作.
      *
+     * @param  UserForgotRequest  $request
      * @return Response
      */
     public function postForgot(UserForgotRequest $request)
@@ -194,9 +198,10 @@ class UserController extends Controller {
     /**
      * 重设密码操作.
      *
+     * @param  UserProfileRequest  $request
      * @return Response
      */
-    public function postReset()
+    public function postReset(UserResetRequest $request)
     {
         $credentials = Request::only(
             'email', 'password', 'password_confirmation', 'token'
@@ -231,6 +236,27 @@ class UserController extends Controller {
     public function getProfile()
     {
         return view('user.profile');
+    }
+
+     /**
+     * 更新个人资料操作.
+     *
+     * @param  UserProfileRequest  $request
+     * @return Response
+     */
+    public function postProfile(UserProfileRequest $request)
+    {
+        $input = $request->all();
+        // dd($input);
+        $user = Auth::user();
+        $user->name = $input['name'];
+        $user->sex = $input['sex'];
+        $user->mobile = $input['mobile'];
+        $user->tel = $input['tel'];
+        if ($user->save()) {
+            return redirect('user/profile')->with('message', Lang::get('site.do_ok'));
+        }
+
     }
 
 }

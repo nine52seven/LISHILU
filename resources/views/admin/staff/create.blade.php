@@ -52,7 +52,7 @@
                 操作
             </div>
             <div class="panel-body">
-                <a href="/staff">全部员工</a>
+                <a href="/staff"><i class="fa fa-users fa-fw"></i> 全部员工</a>
             </div>
         </div>
     </div>

@@ -21,7 +21,7 @@
                   @if ($errors->has('email'))
                     {!! Form::label('icon_email', $errors->first('email'), ['class' => 'red-text active']) !!}
                   @else
-                    {!! Form::label('icon_email', trans('site.email')) !!}
+                    {!! Form::label('icon_email', trans('site.email').','.trans('site.email_hint')) !!}
                   @endif
                 </div>
                 <div class="input-field col s12">
@@ -40,6 +40,15 @@
                     {!! Form::label('icon_password_confirmation', $errors->first('password_confirmation'), ['class' => 'red-text active']) !!}
                   @else
                     {!! Form::label('icon_password_confirmation', trans('site.repeat_password')) !!}
+                  @endif
+                </div>
+                <div class="input-field col s12">
+                  <i class="mdi-action-account-box prefix"></i>
+                  {!! Form::text('name', old('name'), array('class' => 'validate', 'id' => 'icon_name')) !!}
+                  @if ($errors->has('name'))
+                    {!! Form::label('icon_name', $errors->first('name'), ['class' => 'red-text active']) !!}
+                  @else
+                    {!! Form::label('icon_name', trans('site.name')) !!}
                   @endif
                 </div>
                 <!-- <div class="input-field col s12">

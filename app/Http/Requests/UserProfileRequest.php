@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class UserSignupRequest extends Request {
+class UserProfileRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,11 +22,9 @@ class UserSignupRequest extends Request {
 	public function rules()
 	{
 		return [
-			"email" => ['required','email','unique:users'],
-            // "mobile" => ['required','min:11','max:11'],
-            "password" => ['required','min:6','max:16','confirmed'],
-            "name" => ['required'],
-            // "verify_code" => ['required','digits:4'],
+			"name"   => ['required', 'alpha_dash'],
+			"mobile" => ['required','digits:11'],
+			"tel"    => ['required']
 		];
 	}
 

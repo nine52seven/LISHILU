@@ -35,6 +35,8 @@ Route::controller('user', 'UserController');
 //需要登录访问页面
 Route::group(['middleware' => 'auth'], function(){
     Route::get('dashboard', 'DashboardController@index');
+    Route::get('profile', 'DashboardController@getProfile');
+    Route::post('profile', 'DashboardController@postProfile');
 
     Route::group(['prefix' => 'staff'], function() {
         Route::get('/', 'StaffController@index');

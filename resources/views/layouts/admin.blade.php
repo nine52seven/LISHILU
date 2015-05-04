@@ -7,13 +7,13 @@
 
   <!-- CSS  -->
 
-  {!! Html::style('/assets/css/style.css') !!}
   {!! Html::style('/assets/bootstrap/css/bootstrap.min.css') !!}
   {!! Html::style('/assets/bootstrap/css/bootstrap-theme.min.css') !!}
   {!! Html::style('/assets/font-awesome/css/font-awesome.min.css') !!}
   {!! Html::style('/assets/metisMenu/metisMenu.min.css') !!}
   {!! Html::style('/assets/sb-admin-2/css/sb-admin-2.css') !!}
   {!! Html::style('http://fonts.useso.com/css?family=Lato:100') !!}
+  {!! Html::style('/assets/css/style.css') !!}
 
   @yield('css')
 
@@ -105,7 +105,7 @@
       <li class="dropdown">
         <a href="#" data-toggle="dropdown" class="dropdown-toggle">
           <i class="fa fa-user fa-fw"></i>
-          {{$currentUser->email}}
+          {{$currentUser->name}}
           <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">

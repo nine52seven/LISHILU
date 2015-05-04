@@ -9,7 +9,7 @@
 <!-- 导航 -->
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">{{trans('site.staff')}}</h1>
+        <h1 class="page-header">{{trans('site.profile')}}</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -17,33 +17,50 @@
 <!-- 内容正文 -->
 <div class="row">
     <div class="col-md-8">
-        <form action="" role="form">
+        {!! Form::open(array('url' => 'user/profile','method' => 'post')) !!}
             <div class="form-group">
                 <label>姓名</label>
-                <input class="form-control">
+                {!! Form::text('name', old('name') ? old('name') : $currentUser->name, array('class' => 'form-control', 'id' => 'icon_name')) !!}
+                @if ($errors->has('name'))
+                <p class="text-danger">{{ $errors->first('name') }}</p>
+                @endif
             </div>
             <div class="form-group">
                 <label>性别</label>
-                <input class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input class="form-control">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="sex" value="0" @if ($currentUser->sex == 0) checked @endif>男
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="sex" value="1" @if ($currentUser->sex == 1) checked @endif>女
+                    </label>
+                </div>
+                @if ($errors->has('sex'))
+                <p class="text-danger">{{ $errors->first('sex') }}</p>
+                @endif
             </div>
             <div class="form-group">
                 <label>手机</label>
-                <input class="form-control">
-            </div>
-            <div class="form-group">
-                <label>公司</label>
-                <input class="form-control">
+                {!! Form::text('mobile', old('mobile')?old('mobile'):$currentUser->mobile, array('class' => 'form-control', 'id' => 'icon_mobile')) !!}
+                @if ($errors->has('mobile'))
+                <p class="text-danger">{{ $errors->first('mobile') }}</p>
+                @endif
             </div>
             <div class="form-group">
                 <label>公司电话</label>
-                <input class="form-control">
+                {!! Form::text('tel', old('tel')?old('tel'):$currentUser->tel, array('class' => 'form-control', 'id' => 'icon_tel')) !!}
+                @if ($errors->has('tel'))
+                <p class="text-danger">{{ $errors->first('tel') }}</p>
+                @endif
             </div>
-            <button class="btn btn-default" type="submit">修改信息</button>
-        </form>
+            <input type="hidden" name="id" value="{{ $currentUser->id }}"/>
+            <button class="btn btn-default" type="submit">{{trans('site.update')}}</button>
+            @if(Session::has('message'))
+                <span class="text-success" >{{Session::get('message')}}</span>
+            @endif
+        {!! Form::close() !!}
     </div>
 </div>
 

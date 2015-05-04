@@ -58,7 +58,7 @@
                 操作
             </div>
             <div class="panel-body">
-                <a href="/staff/create">添加员工</a>
+                <a href="/staff/create"><i class="fa fa-plus-square fa-fw"></i> 添加员工</a>
             </div>
         </div>
     </div>

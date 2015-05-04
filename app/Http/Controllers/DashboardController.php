@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserProfileRequest;
 
 use Illuminate\Http\Request;
 
@@ -18,5 +19,27 @@ class DashboardController extends Controller {
 	{
 		return view('admin.dashboard');
 	}
+
+    /**
+     * 个人资料.
+     *
+     * @return Response
+     */
+    public function getProfile()
+    {
+        return view('user.profile');
+    }
+
+     /**
+     * 更新个人资料操作.
+     *
+     * @param  UserProfileRequest  $request
+     * @return Response
+     */
+    public function postProfile(UserProfileRequest $request)
+    {
+        $input = Request::all();
+        dd($input);
+    }
 
 }
