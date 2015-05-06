@@ -23,9 +23,10 @@ class CreateTable extends Migration {
             $table->string('tel', 20)->nullable();
             $table->string('mobile', 20)->nullable();
             $table->boolean('active')->default(0);
+            $table->string('role', 100)->nullable();
             $table->text('description')->nullable();
             $table->rememberToken();
-            $table->string('activationcode', 100)->nullable();
+            $table->string('activation_code', 100)->nullable();
             $table->timestamp('actived_at')->nullable();
             $table->softDeletes();
             $table->timestamps();

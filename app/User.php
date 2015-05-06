@@ -31,5 +31,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
+    /**
+     * 禁止被批量更新的字段
+     *
+     * @var array
+     */
+    protected $guarded = ['id', 'password'];
+
 
 }

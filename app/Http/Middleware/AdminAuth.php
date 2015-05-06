@@ -3,7 +3,7 @@
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
-class Authenticate {
+class AdminAuth {
 
 	/**
 	 * The Guard implementation.
@@ -36,18 +36,18 @@ class Authenticate {
 		{
 			if ($request->ajax())
 			{
-				return abort(401);
+				return response('Unauthorized.', 401);
 			}
 			else
 			{
-				return redirect()->guest('user/signin');
+				return redirect()->guest('admin/signin');
 			}
 		}
-		//如果不是客户账号,返回主页
-		if (!in_array($this->auth->user()->role, ['com_m', 'com_u'])) {
+		//如果不是后台管理账号,返回401
+		if ($this->auth->user()->role != 'admin') {
+			// return response('Unauthorized.', 401);
 			return abort(401);
 		}
-
 		return $next($request);
 	}
 

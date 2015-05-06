@@ -11,32 +11,18 @@
 |
 */
 
-
-// 前台登录认证
-Route::filter('auth', function()
-{
-    if( !Auth::check() )
-    {
-        return Redirect::to('user/signin');
-    }
-});
-
-// Route::when('*', 'csrf', array('post', 'put', 'delete'));
-
 //未登录可以访问页面
 Route::get('/', 'IndexController@index');
 Route::get('home', 'IndexController@home');
 Route::get('about', 'IndexController@about');
 Route::get('contact', 'IndexController@contact');
 
-//登陆,注册,退出
-Route::controller('user', 'UserController');
 
 //需要登录访问页面
 Route::group(['middleware' => 'auth'], function(){
     Route::get('dashboard', 'DashboardController@index');
-    Route::get('profile', 'DashboardController@getProfile');
-    Route::post('profile', 'DashboardController@postProfile');
+    Route::get("user/profile", "UserController@getProfile");
+    Route::post("user/profile", "UserController@postProfile");
 
     Route::group(['prefix' => 'staff'], function() {
         Route::get('/', 'StaffController@index');
@@ -46,16 +32,20 @@ Route::group(['middleware' => 'auth'], function(){
 
 });
 
-#对后台开启csrf过滤
-// Route::when('admin/*', 'csrf', ['post','delete','put']);
+//登陆,注册,退出
+Route::controller('user', 'UserController');
 
+//后台管理
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
+    Route::get('signin', 'IndexController@getSignin');
+    Route::post('signin', 'IndexController@postSignin');
+    Route::get('signout', 'IndexController@signout');
 
-// Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-//     Route::get('user', function() {
-//         // blablabla...
-//     });
-//     Route::get('article', function() {
-//         // blablabla...
-//     });
-// });
+    Route::group(['middleware' => 'adminAuth'], function(){
+        Route::get('/', 'IndexController@index');
+        // Route::get('users', 'UsersController@index');
+        // Route::get('users/show/{id}', 'UsersController@show');
+        Route::resource('users', 'UsersController');
+    });
+});
 

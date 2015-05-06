@@ -1,11 +1,13 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
-class StaffController extends Controller {
+use App\User;
+use Request;
+
+class UsersController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +16,8 @@ class StaffController extends Controller {
 	 */
 	public function index()
 	{
-		return view('staff.index');
+		$users = User::all();
+		return view('admin.users.index', ['users' => $users]);
 	}
 
 	/**
@@ -24,7 +27,7 @@ class StaffController extends Controller {
 	 */
 	public function create()
 	{
-		return view('staff.create');
+		dd('haha');
 	}
 
 	/**
@@ -45,7 +48,7 @@ class StaffController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		return view('admin.users.edit', ['user' => User::find($id)]);
 	}
 
 	/**
@@ -56,7 +59,7 @@ class StaffController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		return view('admin.users.edit', ['user' => User::find($id)]);
 	}
 
 	/**
@@ -67,7 +70,14 @@ class StaffController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		$data = Request::all();
+		// dd($data);
+		unset($data['_method']);
+		unset($data['_token']);
+		$user = User::find($id);
+		if ($user->update($data)) {
+           return redirect('admin/users/' . $id)->with('message', '更新成功');
+		}
 	}
 
 	/**

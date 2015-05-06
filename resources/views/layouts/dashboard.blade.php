@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/> -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{env('APP_SITE')}} @yield('title', '')</title>
 
   <!-- CSS  -->
@@ -34,7 +37,6 @@
       </button>
       <a href="/dashboard" class="navbar-brand">Lishilu.com</a>
     </div>
-    <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">
       <!-- 新消息 -->
       <li class="dropdown">
@@ -62,45 +64,8 @@
               </div>
             </a>
           </li>
-          <li class="divider"></li>
-          <li>
-            <a href="#">
-              <div>
-                <i class="fa fa-envelope fa-fw"></i>
-                Message Sent
-                <span class="pull-right text-muted small">4 minutes ago</span>
-              </div>
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="#">
-              <div>
-                <i class="fa fa-tasks fa-fw"></i>
-                New Task
-                <span class="pull-right text-muted small">4 minutes ago</span>
-              </div>
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="#">
-              <div>
-                <i class="fa fa-upload fa-fw"></i>
-                Server Rebooted
-                <span class="pull-right text-muted small">4 minutes ago</span>
-              </div>
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="#" class="text-center">
-              <strong>See All Alerts</strong>
-              <i class="fa fa-angle-right"></i>
-            </a>
-          </li>
         </ul>
-        <!-- /.dropdown-alerts --> </li>
+      </li>
       <!-- 个人设置 -->
       <li class="dropdown">
         <a href="#" data-toggle="dropdown" class="dropdown-toggle">
@@ -123,9 +88,8 @@
             </a>
           </li>
         </ul>
-        <!-- /.dropdown-user --> </li>
+      </li>
     </ul>
-    <!-- /.navbar-top-links -->
 
     <div role="navigation" class="navbar-default sidebar">
       <div class="sidebar-nav navbar-collapse">
@@ -139,7 +103,7 @@
                 </button>
               </span>
             </div>
-            <!-- /input-group --> </li>
+          </li>
           <li>
             <a href="/dashboard">
               <i class="fa fa-dashboard fa-fw"></i>
@@ -178,11 +142,11 @@
                 <a href="#">我们团队</a>
               </li>
             </ul>
-            <!-- /.nav-second-level --> </li>
+          </li>
         </ul>
       </div>
-      <!-- /.sidebar-collapse --> </div>
-    <!-- /.navbar-static-side --> </nav>
+    </div>
+  </nav>
   @show
 
   @section('body')
