@@ -16,6 +16,7 @@ class CreateTable extends Migration {
         {
             $table->engine = 'MyISAM';
             $table->increments('id');
+            $table->string('username', 100)->unique();
             $table->string('name', 100)->nullable();
             $table->string('email', 100)->unique();
             $table->string('password', 60);
@@ -54,7 +55,17 @@ class CreateTable extends Migration {
             $table->engine = 'MyISAM';
             $table->increments('id');
             $table->string('name', 100);
-            $table->string('address');
+            $table->string('reg_address');
+            $table->string('office_address');
+            $table->string('legal_person',100);
+            $table->integer('staff_num');
+            $table->string('business_licence_paper',100);
+            $table->string('business_licence_code',50);
+            $table->string('organization_paper',100);
+            $table->string('organization_code',50);
+            $table->string('taxation_paper',100);
+            $table->string('taxation_code',50);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

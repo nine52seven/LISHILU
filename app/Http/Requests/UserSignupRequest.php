@@ -23,9 +23,17 @@ class UserSignupRequest extends Request {
 	{
 		return [
 			"email" => ['required','email','unique:users'],
+			"username" => ['required', 'min:6', 'max:16','unique:users'],
             // "mobile" => ['required','min:11','max:11'],
             "password" => ['required','min:6','max:16','confirmed'],
             "name" => ['required'],
+            "contact_info" => ['required'],
+            "company_name" => ['required'],
+            "legal_person" => ['required'],
+            "reg_address" => ['required'],
+            "office_address" => ['required'],
+            "staff_num" => ['required'],
+            "agreement" => ['accepted'],
             // "verify_code" => ['required','digits:4'],
 		];
 	}

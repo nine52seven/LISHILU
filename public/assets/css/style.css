@@ -1,8 +1,43 @@
-#page-wrapper .form-control {
-  border-radius: 0;
-  box-shadow: 0 0 0;
-  border-width: 0 0 1px 0;
+body {
+  padding-top: 70px;
 }
-#page-wrapper .form-control:focus {
-  box-shadow: 0 0 0;
+.footer {
+  margin-top: 100px;
+}
+.jumbotron {
+  text-align: center;
+}
+.navbar-inverse {
+  background-color: #cf4646;
+  border-color: transparent;
+}
+.navbar-inverse .navbar-brand {
+  color: #efefef;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #e8e8e8;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover {
+  background-color: transparent;
+  color: #fff;
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #ca3131;
+}
+.navbar-inverse .navbar-toggle {
+  border-color: #fff;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: transparent;
+}
+.form-horizontal .control-hint {
+  margin-bottom: 0;
+  padding-top: 7px;
+}
+.has-error .control-hint {
+  color: #a94442;
 }

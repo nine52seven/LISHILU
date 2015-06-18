@@ -23,12 +23,12 @@ var paths = {
     //源目录
     'jquery': './node_modules/jquery/',
     'bootstrap': './node_modules/bootstrap/',
-    'materializecss': './node_modules/materialize-css',
+    // 'materializecss': './node_modules/materialize-css',
 }
 
 var dir_name = {
     'bootstrap': 'bootstrap',
-    'materializecss': 'materialize-css',
+    // 'materializecss': 'materialize-css',
 }
 
 elixir(function(mix) {
@@ -36,7 +36,7 @@ elixir(function(mix) {
     mix.copy(paths.jquery + 'dist/jquery.min.js', paths.asset_js_path);
 
     //copy meterializecss
-    mix.copy(paths.materializecss, paths.assets_path + dir_name.materializecss);
+    // mix.copy(paths.materializecss, paths.assets_path + dir_name.materializecss);
 
     //copy bootstrap
     mix.copy(paths.bootstrap + 'dist/', paths.assets_path + dir_name.bootstrap);

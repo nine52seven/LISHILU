@@ -100,19 +100,20 @@ class UserController extends Controller {
     public function postSignup(UserSignupRequest $request)
     {
         $user                  = new User;
+        $user->username        = Request::input('username');
         $user->email           = Request::input('email');
         $user->password        = Hash::make(Request::input('password'));
         $user->activation_code = Hash::make($user->email.time());
-        $user->name           = Request::input('name');
+        $user->name            = Request::input('name');
 
         if ($user->save()) {
-            $data = ['email' => $user->email, 'activation_code' => $user->activation_code];
-            Mail::send('emails.hello', $data, function($message) use($data) {
-                    // $message->from('us@example.com', 'Laravel');
-                    $message->to($data['email'], $data['email'])->subject(Lang::get('site.active_title'));
-                    // $message->attach($pathToFile);
-                }
-            );
+            // $data = ['email' => $user->email, 'activation_code' => $user->activation_code];
+            // Mail::send('emails.hello', $data, function($message) use($data) {
+            //         // $message->from('us@example.com', 'Laravel');
+            //         $message->to($data['email'], $data['email'])->subject(Lang::get('site.active_title'));
+            //         // $message->attach($pathToFile);
+            //     }
+            // );
            return redirect('user/signin')->with('message', Lang::get('site.signup_success'));
         } else {
            return redirect('user/signup')->with('message', Lang::get('site.signup_failed'))->withInput();

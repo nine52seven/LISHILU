@@ -13,7 +13,7 @@ return [
     |
     */
 
-    "accepted"         => ":attribute 必须接受。",
+    "accepted"         => "必须接受。",
     "active_url"       => ":attribute 不是一个有效的网址。",
     "after"            => ":attribute 必须是一个在 :date 之后的日期。",
     "alpha"            => ":attribute 只能由字母组成。",
@@ -34,7 +34,7 @@ return [
     "different"        => ":attribute 和 :other 必须不同。",
     "digits"           => ":attribute 必须是 :digits 位的数字。",
     "digits_between"   => ":attribute 必须是介于 :min 和 :max 位的数字。",
-    "email"            => ":attribute 不是一个合法的邮箱。",
+    "email"            => "不是一个合法的邮箱。",
     "exists"           => ":attribute 不存在。",
     "filled"           => ":attribute 不能为空。",
     "image"            => ":attribute 必须是图片。",
@@ -57,7 +57,7 @@ return [
     "not_in"           => "已选的属性 :attribute 非法。",
     "numeric"          => ":attribute 必须是一个数字。",
     "regex"            => ":attribute 格式不正确。",
-    "required"         => ":attribute 不能为空。",
+    "required"         => "必填项。",
     "required_if"      => "当 :other 为 :value 时 :attribute 不能为空。",
     "required_with"    => "当 :values 存在时 :attribute 不能为空。",
     "required_with_all" => "当 :values 存在时 :attribute 不能为空。",
