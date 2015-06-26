@@ -88,7 +88,7 @@
               <span class="col-md-5 control-hint">手机或者公司固话</span>
             @endif
           </div>
-          @if ($errors->has('password'))
+          @if ($errors->has('email'))
           <div class="form-group has-error">
           @else
           <div class="form-group">
@@ -100,7 +100,7 @@
             @if ($errors->has('email'))
               <span class="col-md-5 control-hint">{!! $errors->first('email') !!}</span>
             @else
-              <span class="col-md-5 control-hint">用于接受通知信息</span>
+              <span class="col-md-5 control-hint">用于接收通知信息</span>
             @endif
           </div>
         </fieldset>
@@ -186,7 +186,7 @@
               @endif
             </div>
           </div>
-          @if ($errors->has('password'))
+          @if ($errors->has('agreement'))
           <div class="form-group has-error">
           @else
           <div class="form-group">

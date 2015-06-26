@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class UserResetRequest extends Request {
+class UserChangepwdRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class UserResetRequest extends Request {
 	public function rules()
 	{
 		return [
-			"email" => ['required','email'],
-            "password" => ['required','min:6','max:16'],
+            // "password" => ['required','min:8','max:16'],
+            "newpassword" => ['required','min:8','max:16','confirmed'],
 		];
 	}
 

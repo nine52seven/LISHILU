@@ -23,11 +23,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('dashboard', 'DashboardController@index');
     Route::get("user/profile", "UserController@getProfile");
     Route::post("user/profile", "UserController@postProfile");
+    Route::get("user/changepwd", "UserController@getChangepwd");
+    Route::post("user/changepwd", "UserController@postChangepwd");
 
-    Route::group(['prefix' => 'staff'], function() {
-        Route::get('/', 'StaffController@index');
-        Route::get('create', 'StaffController@create');
-    });
+    // Route::group(['prefix' => 'staff'], function() {
+    //     Route::get('/', 'StaffController@index');
+    //     Route::get('create', 'StaffController@create');
+    // });
+    Route::resource('staff', 'StaffController');
 
 
 });

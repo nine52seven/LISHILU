@@ -21,7 +21,7 @@
 </head>
 <body>
   @section('header')
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -52,34 +52,36 @@
   @yield('content')
 
   @section('footer')
-  <div class="container footer">
-    <hr/>
-    <div class="row">
-      <div class="col-md-6">
-        <h5 class="">{{ trans('site.summary') }}</h5>
-        <p class="grey-text text-lighten-4">{{ trans('site.summary_desc') }}</p>
+  <div id="footer">
+    <div class="container">
+      <hr/>
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="">{{ trans('site.summary') }}</h5>
+          <p class="grey-text text-lighten-4">{{ trans('site.summary_desc') }}</p>
+        </div>
+        <div class="col-md-3">
+          <h5 class="">{{ trans('site.product') }}</h5>
+          <ul>
+            <li><a class="" href="#!">功能特性</a></li>
+            <li><a class="" href="#!">数据安全</a></li>
+            <li><a class="" href="#!">移动版本</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5 class="">{{ trans('site.company') }}</h5>
+          <ul>
+            <li><a class="" href="about">{{ trans('site.about') }}</a></li>
+            <li><a class="" href="contact">{{ trans('site.contact') }}</a></li>
+            <li><a class="" href="privacy">{{ trans('site.privacy') }}</a></li>
+            <li><a class="" href="terms">{{ trans('site.terms') }}</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="col-md-3">
-        <h5 class="">{{ trans('site.product') }}</h5>
-        <ul>
-          <li><a class="" href="#!">功能特性</a></li>
-          <li><a class="" href="#!">数据安全</a></li>
-          <li><a class="" href="#!">移动版本</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h5 class="">{{ trans('site.company') }}</h5>
-        <ul>
-          <li><a class="" href="about">{{ trans('site.about') }}</a></li>
-          <li><a class="" href="contact">{{ trans('site.contact') }}</a></li>
-          <li><a class="" href="privacy">{{ trans('site.privacy') }}</a></li>
-          <li><a class="" href="terms">{{ trans('site.terms') }}</a></li>
-        </ul>
-      </div>
+      <footer>
+        <p>&copy; 施塔福 2015</p>
+      </footer>
     </div>
-    <footer>
-      <p>&copy; 施塔福 2015</p>
-    </footer>
   </div>
   @show
 

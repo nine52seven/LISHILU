@@ -22,9 +22,10 @@ class UserProfileRequest extends Request {
 	public function rules()
 	{
 		return [
-			"name"   => ['required', 'alpha_dash'],
+			"name"   => ['required'],
 			"mobile" => ['required','digits:11'],
-			"tel"    => ['required']
+			"email"    => ['required', 'email'],
+			"sex"    => ['required'],
 		];
 	}
 

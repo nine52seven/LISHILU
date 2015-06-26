@@ -7,8 +7,11 @@
 
 @section('content')
 
-<div class="row">
-  <div class="well text-center">welcome lishilu.com!</div>
+<div class="container">
+    <div class="jumbotron">
+        <h1><span>欢迎进入系统</span></h1>
+        </p>
+    </div>
 </div>
 
 @stop

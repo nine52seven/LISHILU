@@ -8,56 +8,76 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col s12 m6 offset-m3 sign_form">
-      <div class="card">
-        <div class="card-content">
-          <div class="row">
-            <div class="col s12 center-align orange-text"> <i class="mdi-maps-location-history medium"></i></div>
-            {!! Form::open(array('url' => 'user/reset', 'class' => 'col s12', 'method' => 'post')) !!}
-              <div class="row">
-                <div class="input-field col s12">
-                  <input type="hidden" name="token" value="{{ $token }}"/>
-                </div>
-                <div class="input-field col s12">
-                  <i class="mdi-communication-email prefix"></i>
-                  {!! Form::text('email', old('email'), array('class' => 'validate', 'id' => 'icon_email')) !!}
-                  @if ($errors->has('email'))
-                    {!! Form::label('icon_email', $errors->first('email'), ['class' => 'red-text active']) !!}
-                  @else
-                    {!! Form::label('icon_email', trans('site.email')) !!}
-                  @endif
-                </div>
-                <div class="input-field col s12">
-                  <i class="mdi-action-lock prefix"></i>
-                  {!! Form::password('password', ['class' => 'validate', 'id' => 'icon_password']) !!}
-                  @if ($errors->has('password'))
-                    {!! Form::label('icon_password', $errors->first('password'), ['class' => 'red-text active']) !!}
-                  @else
-                    {!! Form::label('icon_password', trans('site.password')) !!}
-                  @endif
-                </div>
-                <div class="input-field col s12">
-                  <i class="mdi-action-lock-outline prefix"></i>
-                  {!! Form::password('password_confirmation', ['class' => 'validate', 'id' => 'icon_password_confirmation']) !!}
-                  @if ($errors->has('password_confirmation'))
-                    {!! Form::label('icon_password_confirmation', $errors->first('password_confirmation'), ['class' => 'red-text active']) !!}
-                  @else
-                    {!! Form::label('icon_password_confirmation', trans('site.repeat_password')) !!}
-                  @endif
-                </div>
-                <div class="input-field col s12 center-align">
-                  <button class="btn waves-effect waves-light orange" type="submit" name="reset">{{ trans('passwords.title') }}
-                    <i class="mdi-navigation-arrow-forward right"></i>
-                  </button>
-                </div>
-              </div>
-            {!! Form::close() !!}
-            @if(Session::has('error'))
-            <div class="col s12 card-panel red center-align white-text" style="padding:5px 0;">{{Session::get('error')}}</div>
+    <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 register">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">{{ trans('passwords.title') }}</h2>
+      </div>
+      <div class="panel-body">
+      {!! Form::open(array('url' => 'user/reset', 'class' => 'form-horizontal', 'method' => 'post')) !!}
+        <fieldset>
+          @if ($errors->has('email'))
+          <div class="form-group has-error">
+          @else
+          <div class="form-group">
+          @endif
+            {!! Form::label('icon_email', trans('site.email'), ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+              {!! Form::text('email', old('email'), ['class' => 'form-control', 'id' => 'icon_email']) !!}
+            </div>
+            @if ($errors->has('email'))
+              <span class="col-md-4 control-hint text-danger">{!! $errors->first('email') !!}</span>
             @endif
           </div>
+          @if ($errors->has('password'))
+          <div class="form-group has-error">
+          @else
+          <div class="form-group">
+          @endif
+            {!! Form::label('icon_password', trans('site.password'), ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+              {!! Form::password('password', ['class' => 'form-control', 'id' => 'icon_password']) !!}
+            </div>
+            @if ($errors->has('password'))
+              <span class="col-md-4 control-hint">{!! $errors->first('password') !!}</span>
+            @endif
+          </div>
+
+          @if ($errors->has('password_confirmation'))
+          <div class="form-group has-error">
+          @else
+          <div class="form-group">
+          @endif
+            {!! Form::label('icon_password_confirmation', trans('site.repeat_password'), ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+              {!! Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'icon_password_confirmation']) !!}
+            </div>
+            @if ($errors->has('password_confirmation'))
+              <span class="col-md-4 control-hint">{!! $errors->first('password_confirmation') !!}</span>
+            @endif
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <div class="col-md-offset-4 col-md-8">
+            <input type="hidden" name="token" value="{{ $token }}"/>
+            <button type="submit" class="btn btn-primary" name="reset">{{ trans('passwords.title') }}</button>
+          </div>
+        </div>
+      {!! Form::close() !!}
+      @if(Session::has('message'))
+        <div class="row">
+          <h3 class="text-center text-danger" style="padding:5px 0;">{{Session::get('message')}}</h3>
+        </div>
+      @endif
+
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-6 text-center"><a href="/user/signup">{{trans('site.i_want_signin')}}</a></div>
+          <div class="col-md-6 text-center"><a href="/user/forgot">{{trans('site.i_want_signup')}}</a></div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </div>

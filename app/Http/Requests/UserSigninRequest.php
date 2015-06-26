@@ -22,8 +22,8 @@ class UserSigninRequest extends Request {
 	public function rules()
 	{
 		return [
-			"email" => ['required','email'],
-            "password" => ['required','min:6','max:16'],
+			"username" => ['required'],
+            "password" => ['required'],
 		];
 	}
 

@@ -43,8 +43,9 @@ class Authenticate {
 				return redirect()->guest('user/signin');
 			}
 		}
-		//如果不是客户账号,返回主页
-		if (!in_array($this->auth->user()->role, ['com_m', 'com_u'])) {
+		//如果不是客户账号,返回401
+		$roles = explode(",", $this->auth->user()->role);
+		if (count(array_intersect($roles, ['com_m', 'com_u'])) <= 0) {
 			return abort(401);
 		}
 

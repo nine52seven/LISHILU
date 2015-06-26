@@ -62,7 +62,7 @@ class IndexController extends Controller {
 	{
 		$data = Request::all();
         $remember = empty($data['remember']) ? false : true;
-        if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'active' => 1], $remember))
+        if (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'active' => 1], $remember))
         {
             $user = Auth::user();
             Auth::login( $user );

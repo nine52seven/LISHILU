@@ -8,55 +8,70 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col s12 m6 offset-m3 sign_form">
-      <div class="card">
-        <div class="card-content">
-          <div class="row">
-            <div class="col s12 center-align orange-text"> <i class="mdi-file-cloud-queue medium"></i></div>
-            {!! Form::open(array('url' => 'user/signin', 'class' => 'col s12', 'method' => 'post')) !!}
-              <div class="row">
-                <div class="input-field col s12">
-                  <i class="mdi-action-account-circle prefix"></i>
-                  {!! Form::text('email', old('email'), ['class' => 'validate', 'id' => 'icon_email']) !!}
-                  @if ($errors->has('email'))
-                    {!! Form::label('icon_email', $errors->first('email'), ['class' => 'red-text active']) !!}
-                  @else
-                    {!! Form::label('icon_email', trans('site.email')) !!}
-                  @endif
-                </div>
-                <div class="input-field col s12">
-                  <i class="mdi-action-lock prefix"></i>
-                  {!! Form::password('password', ['class' => 'validate', 'id' => 'icon_password']) !!}
-                  @if ($errors->has('password'))
-                    {!! Form::label('icon_password', $errors->first('password'), ['class' => 'red-text active']) !!}
-                  @else
-                    {!! Form::label('icon_password', trans('site.password')) !!}
-                  @endif
-                </div>
-                <div class="input-field col s8">
-                  {!! Form::checkbox('remember', '1', '', ['id' => 'remember']) !!}
-                  {!! Form::label('remember', trans('site.remember_me')) !!}
-                </div>
-                <div class="input-field col s4">
-                  <button class="btn waves-effect waves-light orange" type="submit" name="signin">{{ trans('site.signin') }}
-                    <i class="mdi-content-send right"></i>
-                  </button>
-                </div>
-              </div>
-            {!! Form::close() !!}
-            @if(Session::has('message'))
-            <div class="col s12 card-panel red center-align white-text" style="padding:5px 0;">{{Session::get('message')}}</div>
+    <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 register">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">用户登录</h2>
+      </div>
+      <div class="panel-body">
+      {!! Form::open(array('url' => 'user/signin', 'class' => 'form-horizontal', 'method' => 'post')) !!}
+        <fieldset>
+          @if ($errors->has('username'))
+          <div class="form-group has-error">
+          @else
+          <div class="form-group">
+          @endif
+            {!! Form::label('icon_username', '用户名', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+              {!! Form::text('username', old('username'), ['class' => 'form-control', 'id' => 'icon_username']) !!}
+            </div>
+            @if ($errors->has('username'))
+              <span class="col-md-4 control-hint text-danger">{!! $errors->first('username') !!}</span>
             @endif
           </div>
+          @if ($errors->has('password'))
+          <div class="form-group has-error">
+          @else
+          <div class="form-group">
+          @endif
+            {!! Form::label('icon_password', '密码', ['class' => 'col-md-4 control-label']) !!}
+            <div class="col-md-4">
+              {!! Form::password('password', ['class' => 'form-control', 'id' => 'icon_password']) !!}
+            </div>
+            @if ($errors->has('password'))
+              <span class="col-md-4 control-hint">{!! $errors->first('password') !!}</span>
+            @endif
+          </div>
+          <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="remember" @if (old('remember')) checked @endif> 记住我
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <div class="col-md-offset-4 col-md-8">
+            <button type="submit" class="btn btn-primary">{{ trans('site.signin') }}</button>
+          </div>
         </div>
-        <div class="card-action">
-            <div class="col s6 m6 center-align"><a href="/user/signup">{{trans('site.i_want_signup')}}</a></div>
-            <div class="col s6 m6 center-align"><a href="/user/forgot">{{trans('site.forget_password')}}</a></div>
+      {!! Form::close() !!}
+      @if(Session::has('message'))
+        <div class="row">
+          <h3 class="text-center text-danger" style="padding:5px 0;">{{Session::get('message')}}</h3>
         </div>
-        <div class="right" style="margin-top:15px;">
-          <span class=" grey-text text-lighten-4"> {{ trans('site.slogan') }}</span>
+      @endif
+
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-6 text-center"><a href="/user/signup">{{trans('site.i_want_signup')}}</a></div>
+          <div class="col-md-6 text-center"><a href="/user/forgot">{{trans('site.forget_password')}}</a></div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </div>

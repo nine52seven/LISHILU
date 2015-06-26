@@ -13,7 +13,7 @@ return [
     |
     */
 
-    "accepted"         => "必须接受。",
+    "accepted"         => "请接受。",
     "active_url"       => ":attribute 不是一个有效的网址。",
     "after"            => ":attribute 必须是一个在 :date 之后的日期。",
     "alpha"            => ":attribute 只能由字母组成。",
@@ -51,7 +51,7 @@ return [
     "min"              => [
         "numeric" => ":attribute 必须大于等于 :min。",
         "file"    => ":attribute 大小不能小于 :min kb。",
-        "string"  => ":attribute 至少为 :min 个字符。",
+        "string"  => "至少为 :min 个字符。",
         "array"   => ":attribute 至少有 :min 个单元。"
     ],
     "not_in"           => "已选的属性 :attribute 非法。",

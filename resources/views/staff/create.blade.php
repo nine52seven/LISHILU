@@ -17,7 +17,8 @@
 <!-- 内容正文 -->
 <div class="row">
     <div class="col-md-8">
-        <form action="" role="form">
+
+        {!! Form::open(array('url' => '/staff', 'class' => 'form-horizontal', 'method' => 'post')) !!}
             <div class="form-group">
                 <label>姓名</label>
                 <input class="form-control">

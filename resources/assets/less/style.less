@@ -1,45 +1,98 @@
+// //header的高度
+@header-height: 50px;
+//footer的上边距
+@footer-margin-top: 100px;
+// //主体颜色
+// @base-color: #cf4646;
+// @base-bg-color: #fff;
+// //连接的颜色
+// @link-color: @base-color;
+// @link-bg-color: #efefef;
+// //活动连接的颜色
+// @link-active-color: darken(@link-color, 15%);
+// @link-bg-active-color: darken(@link-bg-color, 15%);
+//错误信息的字体颜色
+@has-error-color: #a94442;
+
+@white: #fff;
+
+// @link-color:       darken(#f0ad4e, 6.5%);;
+// @link-hover-color: darken(@link-color, 15%);
+
+// Usage
+// a {
+//   color: @link-color;
+//   text-decoration: none;
+
+//   &:hover {
+//     color: @link-active-color;
+//     text-decoration: underline;
+//   }
+// }
+
 body {
-    padding-top: 70px;
+    padding-top: @header-height+20;
+    // background-color: @base-bg-color;
 }
-.footer {
-    margin-top: 100px;
+#footer {
+    margin-top: @footer-margin-top;
+    background-color: @white;
+    ul {
+        list-style: outside none none;
+        padding-left: 0;
+    }
 }
-.jumbotron {
-    // background-color: #cf4646;
-    // color: #fff;
-    text-align: center;
+// .jumbotron {
+//     text-align: center;
+//     color: @white;
+//     background-color: @base-color;
+// }
+// // .navbar {
+// //     margin-bottom: 0px;
+// // }
+
+// .navbar-inverse {
+//     background-color: @base-color;
+//     border-color: transparent;
+
+//     .navbar-brand {
+//         color: @link-bg-color;
+//     }
+//     .navbar-nav {
+//         >li {
+//             >a {
+//                 color: @link-bg-color;
+//             }
+//         }
+//         >.active {
+//             >a {
+//                 &, &:focus, &:hover {
+//                     background-color: transparent;
+//                     color: @link-bg-active-color;
+//                 }
+//             }
+//         }
+//     }
+//     .navbar-collapse, .navbar-form {
+//         border-color: #ca3131;
+//     }
+//     .navbar-toggle {
+//         border-color: #fff;
+//         &:hover, &:focus {
+//             background-color: transparent;
+//         }
+//     }
+// }
+
+.form-horizontal {
+    .control-hint {
+        margin-bottom: 0;
+        padding-top: 7px;
+    }
 }
 
-.navbar-inverse {
-    background-color: #cf4646;
-    border-color: transparent;
-}
-.navbar-inverse .navbar-brand {
-    color: #efefef;
-}
-.navbar-inverse .navbar-nav > li > a {
-    color: #e8e8e8;
-}
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
-    background-color: transparent;
-    color: #fff;
-}
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: #ca3131;
-}
-.navbar-inverse .navbar-toggle {
-    border-color: #fff;
-}
-.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-    background-color: transparent;
-}
-
-
-.form-horizontal .control-hint {
-    margin-bottom: 0;
-    padding-top: 7px;
-}
-
-.has-error .control-hint {
-    color: #a94442;
+.has-error {
+    .control-hint {
+        color: @has-error-color;
+    }
 }

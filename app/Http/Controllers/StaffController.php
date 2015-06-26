@@ -34,7 +34,7 @@ class StaffController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		dd('heihei');
 	}
 
 	/**

@@ -38,5 +38,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $guarded = ['id', 'password'];
 
+    public function company()
+    {
+        return $this->belongsTo('App\Company');
+    }
+
 
 }

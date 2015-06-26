@@ -23,9 +23,9 @@ class UserSignupRequest extends Request {
 	{
 		return [
 			"email" => ['required','email','unique:users'],
-			"username" => ['required', 'min:6', 'max:16','unique:users'],
+			"username" => ['required', 'min:3', 'max:16','unique:users', 'alpha_dash'],
             // "mobile" => ['required','min:11','max:11'],
-            "password" => ['required','min:6','max:16','confirmed'],
+            "password" => ['required','min:8','max:16','confirmed'],
             "name" => ['required'],
             "contact_info" => ['required'],
             "company_name" => ['required'],

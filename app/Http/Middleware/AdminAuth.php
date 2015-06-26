@@ -44,8 +44,8 @@ class AdminAuth {
 			}
 		}
 		//如果不是后台管理账号,返回401
-		if ($this->auth->user()->role != 'admin') {
-			// return response('Unauthorized.', 401);
+		$roles = explode(",", $this->auth->user()->role);
+		if (count(array_intersect($roles, ['admin'])) <= 0) {
 			return abort(401);
 		}
 		return $next($request);

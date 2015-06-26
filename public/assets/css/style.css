@@ -1,38 +1,13 @@
 body {
   padding-top: 70px;
 }
-.footer {
+#footer {
   margin-top: 100px;
+  background-color: #ffffff;
 }
-.jumbotron {
-  text-align: center;
-}
-.navbar-inverse {
-  background-color: #cf4646;
-  border-color: transparent;
-}
-.navbar-inverse .navbar-brand {
-  color: #efefef;
-}
-.navbar-inverse .navbar-nav > li > a {
-  color: #e8e8e8;
-}
-.navbar-inverse .navbar-nav > .active > a,
-.navbar-inverse .navbar-nav > .active > a:focus,
-.navbar-inverse .navbar-nav > .active > a:hover {
-  background-color: transparent;
-  color: #fff;
-}
-.navbar-inverse .navbar-collapse,
-.navbar-inverse .navbar-form {
-  border-color: #ca3131;
-}
-.navbar-inverse .navbar-toggle {
-  border-color: #fff;
-}
-.navbar-inverse .navbar-toggle:hover,
-.navbar-inverse .navbar-toggle:focus {
-  background-color: transparent;
+#footer ul {
+  list-style: outside none none;
+  padding-left: 0;
 }
 .form-horizontal .control-hint {
   margin-bottom: 0;

@@ -1,25 +1,27 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\UserSignupRequest;
 use App\Http\Requests\UserSigninRequest;
 use App\Http\Requests\UserForgotRequest;
+use App\Http\Requests\UserResetRequest;
 use App\Http\Requests\UserProfileRequest;
+use App\Http\Requests\UserChangepwdRequest;
 
 // use App\Http\Controllers\Password;
 
 // use Illuminate\Http\Request;
-use Request;
+// // use Request;
 use Auth;
 use Redirect;
 use Hash;
 use Session;
 use Lang;
 use Mail;
-use App\User;
 use Crypt;
 use Password;
+use App\User;
+use App\Company;
 
 class UserController extends Controller {
 
@@ -62,7 +64,7 @@ class UserController extends Controller {
 
         $data = Request::all();
         $remember = empty($data['remember']) ? false : true;
-        if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'active' => 1], $remember))
+        if (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'active' => 1], $remember))
         {
             $user = Auth::user();
             Auth::login( $user );
@@ -99,13 +101,30 @@ class UserController extends Controller {
      */
     public function postSignup(UserSignupRequest $request)
     {
-        $user                  = new User;
-        $user->username        = Request::input('username');
-        $user->email           = Request::input('email');
-        $user->password        = Hash::make(Request::input('password'));
-        $user->activation_code = Hash::make($user->email.time());
-        $user->name            = Request::input('name');
+        $user           = new User;
+        $user->username = Request::input('username');
+        $user->password = Hash::make(Request::input('password'));
+        $user->name     = Request::input('name');
+        $user->email    = Request::input('email');
+        $user->admin    = 1;
+        $user->role     = 'com_m';
+        $contact_info   = Request::input('contact_info');
+        //判断是联系信息是手机号还是其他
+        if (preg_match("/^1[34578]\d{9}$/", $contact_info)) {
+            $user->mobile = $contact_info;
+        } else {
+            $user->tel = $contact_info;
+        }
 
+        $company                 = new Company;
+        $company->name           = Request::input('company_name');
+        $company->legal_person   = Request::input('legal_person');
+        $company->reg_address    = Request::input('reg_address');
+        $company->office_address = Request::input('office_address');
+        $company->staff_num      = Request::input('staff_num');
+        if ($company->save) {
+            $user->company_id = $company->id;
+        }
         if ($user->save()) {
             // $data = ['email' => $user->email, 'activation_code' => $user->activation_code];
             // Mail::send('emails.hello', $data, function($message) use($data) {
@@ -144,10 +163,11 @@ class UserController extends Controller {
             return redirect('/');
         }
 
-        $user->active = 1;
+        $user->active          = 1;
         $user->activation_code = null;
-        $user->actived_at = date('Y-m-d H:i:s');
+        $user->actived_at      = date('Y-m-d H:i:s');
         $user->save();
+
         return redirect('user/signin')->with('message', Lang::get('site.active_ok'));
     }
 
@@ -221,7 +241,7 @@ class UserController extends Controller {
             case Password::INVALID_PASSWORD:
             case Password::INVALID_TOKEN:
             case Password::INVALID_USER:
-                return Redirect::back()->with('error', Lang::get($response));
+                return Redirect::back()->with('message', Lang::get($response));
 
             case Password::PASSWORD_RESET:
                 return redirect()->intended('dashboard');
@@ -248,14 +268,50 @@ class UserController extends Controller {
     public function postProfile(UserProfileRequest $request)
     {
         $input = $request->all();
-        // dd($input);
-        $user = Auth::user();
-        $user->name = $input['name'];
-        $user->sex = $input['sex'];
+
+        $user         = Auth::user();
+        $user->name   = $input['name'];
+        $user->email  = $input['email'];
+        $user->sex    = $input['sex'];
         $user->mobile = $input['mobile'];
-        $user->tel = $input['tel'];
+        $user->tel    = $input['tel'];
+        $user->idcard = $input['idcard'];
+
         if ($user->save()) {
             return redirect('user/profile')->with('message', Lang::get('site.do_ok'));
+        }
+
+    }
+
+    /**
+     * 修改密码
+     *
+     * @return  Response
+     */
+    public function getChangepwd()
+    {
+        return view('user.changepwd');
+    }
+
+    /**
+     * 修改密码操作
+     *
+     * @return Response
+     */
+    public function postChangepwd(UserChangepwdRequest $request)
+    {
+        $input       = $request->all();
+        $password    = $input['password'];
+        $newpassword = $input['newpassword'];
+
+        $user = Auth::user();
+
+        if (Auth::validate(['username' => $user->username, 'password' => $password])) {
+            $user->password = Hash::make($newpassword);
+            $user->save();
+            return redirect('user/changepwd')->with('message', Lang::get('site.do_ok'));
+        } else {
+            return redirect('user/changepwd')->with('message', '操作失败');
         }
 
     }

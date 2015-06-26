@@ -20,14 +20,14 @@ return [
     'signin_failed'    => '登录失败',
     'profile'          => '个人设置',
     'signup_failed'    => '注册失败',
-    'signup_success'   => '感谢你的注册!我们审核完会联系您.',
+    'signup_success'   => '感谢你的注册!请耐心等待我们的审核.',
     'active_title'     => '欢迎注册我们的网站,请激活您的账号!',
     'active_ok'        => '你的账号已经激活,请在此登陆',
     'input_email'      => '请输入你注册时的email',
     'send_forgot_link' => '发送重置密码链接',
 
     //网站部分
-    'copyright'    => 'one2one studio!',
+    'copyright'    => '@施塔福!',
     'about'        => '关于我们',
     'contact'      => '联系我们',
     'privacy'      => '隐私声明',

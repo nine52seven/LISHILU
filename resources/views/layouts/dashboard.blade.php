@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-  <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> -->
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/> -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,10 +9,7 @@
   <!-- CSS  -->
 
   {!! Html::style('/assets/bootstrap/css/bootstrap.min.css') !!}
-  {!! Html::style('/assets/bootstrap/css/bootstrap-theme.min.css') !!}
   {!! Html::style('/assets/font-awesome/css/font-awesome.min.css') !!}
-  {!! Html::style('/assets/metisMenu/metisMenu.min.css') !!}
-  {!! Html::style('/assets/sb-admin-2/css/sb-admin-2.css') !!}
   {!! Html::style('http://fonts.useso.com/css?family=Lato:100') !!}
   {!! Html::style('/assets/css/style.css') !!}
 
@@ -25,142 +20,139 @@
 
 </head>
 <body>
-<div class="wrapper">
-  @section('header')
-  <nav style="margin-bottom: 0" role="navigation" class="navbar navbar-default navbar-static-top">
+@section('header')
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
     <div class="navbar-header">
-      <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/dashboard" class="navbar-brand">Lishilu.com</a>
+      <a class="navbar-brand" href="#">{{env('APP_SITE')}}</a>
     </div>
-    <ul class="nav navbar-top-links navbar-right">
-      <!-- 新消息 -->
-      <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-          <i class="fa fa-bell fa-fw"></i>
-          <i class="fa fa-caret-down"></i>
-        </a>
-        <ul class="dropdown-menu dropdown-alerts">
-          <li>
-            <a href="#">
-              <div>
-                <i class="fa fa-comment fa-fw"></i>
-                New Comment
-                <span class="pull-right text-muted small">4 minutes ago</span>
-              </div>
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="#">
-              <div>
-                <i class="fa fa-twitter fa-fw"></i>
-                3 New Followers
-                <span class="pull-right text-muted small">12 minutes ago</span>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <!-- 个人设置 -->
-      <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-          <i class="fa fa-user fa-fw"></i>
-          {{$currentUser->name}}
-          <i class="fa fa-caret-down"></i>
-        </a>
-        <ul class="dropdown-menu dropdown-user">
-          <li>
-            <a href="/user/profile">
-              <i class="fa fa-gear fa-fw"></i>
-              {{trans('site.profile')}}
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="/user/signout">
-              <i class="fa fa-sign-out fa-fw"></i>
-              {{trans('site.signout')}}
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-dashboard fa-fw"></i>
+            {{trans('site.dashboard')}}
+          </a>
+        </li>
+        <li>
+          <a href="/dashboard">
+            <i class="fa fa-dashboard fa-fw"></i>
+            公司信息
+          </a>
+        </li>
+        <li>
+          <a href="/staff">
+            <i class="fa fa-bar-chart-o fa-fw"></i>
+            {{trans('site.staff')}}
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-table fa-fw"></i>
+            员工福利
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">关于我们 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">熟悉我们</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">我们的团队</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- 新消息 -->
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+            <i class="fa fa-bell fa-fw"></i>
+            <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-alerts">
+            <li>
+              <a href="#">
+                <div>
+                  <i class="fa fa-comment fa-fw"></i>
+                  New Comment
+                  <span class="pull-right text-muted small">4 minutes ago</span>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <i class="fa fa-twitter fa-fw"></i>
+                  3 New Followers
+                  <span class="pull-right text-muted small">12 minutes ago</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+            <i class="fa fa-user fa-fw"></i>
+            {{$currentUser->name}}
+            <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li>
+              <a href="/user/profile">
+                <i class="fa fa-gear fa-fw"></i>
+                {{trans('site.profile')}}
+              </a>
+            </li>
+            <li>
+              <a href="/user/changepwd">
+                <i class="fa fa-key fa-fw"></i>
+                修改密码
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="/user/signout">
+                <i class="fa fa-sign-out fa-fw"></i>
+                {{trans('site.signout')}}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+@show
 
-    <div role="navigation" class="navbar-default sidebar">
-      <div class="sidebar-nav navbar-collapse">
-        <ul id="side-menu" class="nav in">
-          <li class="sidebar-search">
-            <div class="input-group custom-search-form">
-              <input type="text" placeholder="Search..." class="form-control">
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </li>
-          <li>
-            <a href="/dashboard">
-              <i class="fa fa-dashboard fa-fw"></i>
-              {{trans('site.dashboard')}}
-            </a>
-          </li>
-          <li>
-            <a href="/staff">
-              <i class="fa fa-bar-chart-o fa-fw"></i>
-              {{trans('site.staff')}}
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-table fa-fw"></i>
-              员工福利
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-edit fa-fw"></i>
-              社保基金
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-files-o fa-fw"></i>
-              关于Lishilu
-              <span class="fa arrow"></span>
-            </a>
-            <ul class="nav nav-second-level collapse">
-              <li>
-                <a href="#">熟悉Lishilu</a>
-              </li>
-              <li>
-                <a href="#">我们团队</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  @show
-
-  @section('body')
-  <div id="page-wrapper" style="min-height: 471px;">
+@section('body')
+<div id="page-wrapper">
+  <div class="container" style="min-height: 471px;">
     @yield('content')
   </div>
-  @show
-
 </div>
+@show
+
+@section('footer')
+<div id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="well text-center">
+        {{trans('site.copyright')}}
+      </div>
+    </div>
+  </div>
+</div>
+@show
   <!--  Scripts-->
   {!! Html::script('/assets/js/jquery.min.js') !!}
   {!! Html::script('/assets/bootstrap/js/bootstrap.min.js') !!}
-  {!! Html::script('/assets/metisMenu/metisMenu.min.js') !!}
-  {!! Html::script('/assets/sb-admin-2/js/sb-admin-2.js') !!}
   {!! Html::script('/assets/js/all.js') !!}
 
   @yield('js')
