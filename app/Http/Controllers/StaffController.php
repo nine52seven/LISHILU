@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Auth;
 use App\User;
 use App\Company;
 
@@ -15,8 +16,15 @@ class StaffController extends Controller {
 	 */
 	public function index()
 	{
+		$company = Auth::user()->company;
 
-		return view('staff.index');
+		if ($company && $company->staff) {
+			$staff = $company->staff;
+		} else {
+			$staff = [];
+		}
+		// dd($company);
+		return view('staff.index', compact("company", "staff"));
 	}
 
 	/**

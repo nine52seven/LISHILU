@@ -25,11 +25,15 @@ class CreateTable extends Migration {
             $table->string('tel', 20)->nullable();
             $table->string('mobile', 20)->nullable();
             $table->string('idcard', 18)->nullable();
-            $table->boolean('active')->default(0);
-            $table->integer('company_id')->nullable();
-            $table->boolean('role')->nullable();
-            $table->boolean('admin')->default(0);
+            $table->date('entrydate', 18)->nullable();
+            $table->boolean('status')->default(0);  //1 正式 2 试用 3 离职
             $table->text('description')->nullable();
+
+
+            $table->boolean('active')->default(0);  //是否激活
+            $table->integer('company_id')->nullable();  //所属公司id
+            $table->boolean('role')->nullable();    //角色, com_m, com_u, admin
+            $table->boolean('admin')->default(0);   //是否是公司的管理员
             $table->rememberToken();
             $table->string('activation_code', 100)->nullable();
             $table->timestamp('actived_at')->nullable();

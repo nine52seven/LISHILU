@@ -33,7 +33,7 @@ class Company extends Model {
      */
     // protected $guarded = ['id', 'password'];
 
-    public function users()
+    public function staff()
     {
         return $this->hasMany('App\User');
     }

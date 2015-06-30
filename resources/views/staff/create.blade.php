@@ -9,7 +9,7 @@
     <!-- 导航 -->
     <div class="row">
         <div class="col-md-12">
-            <h3 class="page-header">{{trans('site.profile')}}</h3>
+            <h3 class="page-header">添加员工</h3>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -25,7 +25,7 @@
             @endif
             {!! Form::label('icon_name', '姓名', ['class' => 'col-md-2 control-label']) !!}
             <div class="col-md-5">
-              {!! Form::text('name', old('name') ? old('name') : $currentUser->name, ['class' => 'form-control', 'id' => 'icon_name']) !!}
+              {!! Form::text('name', old('name') ? old('name') : '', ['class' => 'form-control', 'id' => 'icon_name']) !!}
             </div>
             @if ($errors->has('username'))
               <span class="col-md-5 control-hint text-danger">{!! $errors->first('username') !!}</span>
