@@ -3,10 +3,11 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Auth;
 use App\User;
 use App\Company;
 
-class StaffController extends Controller {
+class CompanyController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -15,8 +16,10 @@ class StaffController extends Controller {
 	 */
 	public function index()
 	{
+		// $company = Company::findOrFail(1);
+		$company = Auth::user()->company;
 
-		return view('staff.index');
+		return view('company.index', compact("company"));
 	}
 
 	/**
@@ -26,7 +29,7 @@ class StaffController extends Controller {
 	 */
 	public function create()
 	{
-		return view('staff.create');
+		return view('company.create');
 	}
 
 	/**

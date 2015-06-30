@@ -11,7 +11,7 @@ use App\Http\Requests\UserChangepwdRequest;
 // use App\Http\Controllers\Password;
 
 // use Illuminate\Http\Request;
-// // use Request;
+use Request;
 use Auth;
 use Redirect;
 use Hash;
@@ -22,6 +22,7 @@ use Crypt;
 use Password;
 use App\User;
 use App\Company;
+use Carbon\Carbon;
 
 class UserController extends Controller {
 
@@ -36,6 +37,7 @@ class UserController extends Controller {
         $decrypted = Crypt::decrypt($encrypted);
         echo $encrypted."<br/>";
         echo $decrypted;
+        printf("Now: %s", Carbon::now());
         dd('index');
     }
 

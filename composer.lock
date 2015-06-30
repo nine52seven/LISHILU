@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a3fb6f6440fa78b2e743c6b867459544",
+    "hash": "5497f1f3987deaaa3b4f43851781c729",
     "packages": [
         {
             "name": "caouecs/laravel4-lang",
@@ -823,21 +823,21 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.18.0",
+            "version": "1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "99e2f69f7bdc2cc4334b2d00f1e0ba450623ea36"
+                "reference": "bfd3eaba109c9a2405c92174c8e17f20c2b9caf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/99e2f69f7bdc2cc4334b2d00f1e0ba450623ea36",
-                "reference": "99e2f69f7bdc2cc4334b2d00f1e0ba450623ea36",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bfd3eaba109c9a2405c92174c8e17f20c2b9caf3",
+                "reference": "bfd3eaba109c9a2405c92174c8e17f20c2b9caf3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "symfony/translation": "2.6.*"
+                "symfony/translation": "~2.6|~3.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.0"
@@ -866,7 +866,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2015-03-26 03:05:57"
+            "time": "2015-06-25 04:19:39"
         },
         {
             "name": "nikic/php-parser",
@@ -914,48 +914,6 @@
             "time": "2015-04-03 14:33:59"
         },
         {
-            "name": "onokumus/metismenu",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/onokumus/metisMenu.git",
-                "reference": "c3bf00c14267bb4d364f8bba894c141790ddaae7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/onokumus/metisMenu/zipball/c3bf00c14267bb4d364f8bba894c141790ddaae7",
-                "reference": "c3bf00c14267bb4d364f8bba894c141790ddaae7",
-                "shasum": ""
-            },
-            "suggest": {
-                "components/jquery": ">=1.8"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Osman Nuri Okumus",
-                    "email": "onokumus@gmail.com",
-                    "homepage": "http://onokumus.com"
-                }
-            ],
-            "description": "A jQuery menu plugin",
-            "homepage": "https://github.com/onokumus/metisMenu",
-            "keywords": [
-                "JS",
-                "bootstrap",
-                "css",
-                "jquery",
-                "menu",
-                "plugin",
-                "web"
-            ],
-            "time": "2015-04-03 17:46:24"
-        },
-        {
             "name": "overtrue/laravel-lang",
             "version": "dev-master",
             "source": {
@@ -965,7 +923,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/5f4c8cb61b05e3aa7021832bb5af2c311147ae50",
+                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/bc0a9ae9866f486fdcdca6443e272eb7e8968815",
                 "reference": "5f4c8cb61b05e3aa7021832bb5af2c311147ae50",
                 "shasum": ""
             },
@@ -3080,8 +3038,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "overtrue/laravel-pinyin": 20,
-        "overtrue/laravel-lang": 20,
-        "onokumus/metismenu": 20
+        "overtrue/laravel-lang": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

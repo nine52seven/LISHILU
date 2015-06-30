@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function(){
     //     Route::get('create', 'StaffController@create');
     // });
     Route::resource('staff', 'StaffController');
+    Route::resource('company', 'CompanyController');
 
 
 });

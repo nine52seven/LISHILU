@@ -9,6 +9,9 @@ body {
   list-style: outside none none;
   padding-left: 0;
 }
+.page-right {
+  padding-top: 76px;
+}
 .form-horizontal .control-hint {
   margin-bottom: 0;
   padding-top: 7px;

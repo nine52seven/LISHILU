@@ -42,7 +42,7 @@
           </a>
         </li>
         <li>
-          <a href="/dashboard">
+          <a href="/company">
             <i class="fa fa-dashboard fa-fw"></i>
             公司信息
           </a>
@@ -134,7 +134,12 @@
 @section('body')
 <div id="page-wrapper">
   <div class="container" style="min-height: 471px;">
-    @yield('content')
+    <row class="col-md-9 page-left">
+      @yield('page-left')
+    </row>
+    <row class="col-md-3 page-right">
+      @yield('page-right')
+    </row>
   </div>
 </div>
 @show
